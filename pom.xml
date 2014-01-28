@@ -13,6 +13,7 @@
         <module>deployment-engine</module>
         <module>bpmn-workflows</module>
         <module>cloud-resource-base</module>
+        <module>data-model</module>
     </modules>
 
 

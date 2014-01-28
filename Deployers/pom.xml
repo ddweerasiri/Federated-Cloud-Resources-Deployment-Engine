@@ -16,6 +16,8 @@
         <module>common</module>
         <module>rackspace</module>
         <module>aws</module>
+        <module>misseleneous</module>
+        <module>cloud-base-deployer</module>
     </modules>
 
     <dependencies>

@@ -15,8 +15,8 @@ package au.edu.unsw.cse.soc.federatedcloud.deployers.rackspace;
  * limitations under the License.
  */
 
-import au.edu.unsw.cse.soc.federatedcloud.deployers.CloudResourceDeployer;
 import au.edu.unsw.cse.soc.federatedcloud.datamodel.CloudResourceDescription;
+import au.edu.unsw.cse.soc.federatedcloud.deployers.CloudResourceDeployer;
 import org.jclouds.compute.domain.NodeMetadata;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

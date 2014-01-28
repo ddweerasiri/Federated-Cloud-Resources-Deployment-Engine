@@ -101,4 +101,3 @@ public class CloudResourceDescription {
         return id == cloudResourceDescriptionID;
     }
 }
-

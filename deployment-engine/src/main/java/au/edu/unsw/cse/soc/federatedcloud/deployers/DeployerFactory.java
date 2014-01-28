@@ -27,7 +27,7 @@ public class DeployerFactory {
     private static final Logger logger = LoggerFactory.getLogger(DeployerFactory.class);
 
     public static CloudResourceDeployer build(String provider) throws Exception {
-        if (Constants.CLOUD_RESOURCE_BASE_PROVIDER_NAME.equals(provider)) {
+        /*if (Constants.CLOUD_RESOURCE_BASE_PROVIDER_NAME.equals(provider)) {
             return new CloudBaseDeployer();
         } else if ("Pivotal Tracker".equals(provider)) {
             return new PivotalTrackerDeployer();
@@ -47,6 +47,7 @@ public class DeployerFactory {
             return new HerokuDeployer();
         } else {
             throw new Exception("Deployer class is not registered for the provider \"" + provider + "\" in DeployerFactory.");
-        }
+        }*/
+        return null;
     }
 }
