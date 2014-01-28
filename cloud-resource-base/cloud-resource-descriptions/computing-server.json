@@ -1,0 +1,13 @@
+{
+    "attributes": {
+        "id": 8,
+        "name": "Computing-Service",
+        "operating-system": "ubuntu-12.04",
+        "memory": 1024
+    },
+    "providers": [
+        {
+            "name": "Rackspace"
+        }
+    ]
+}

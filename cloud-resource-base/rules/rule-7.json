@@ -1,0 +1,11 @@
+{
+    "id": 7,
+    "condition": {
+        "task_category": ["Project Management Service"]
+    },
+    "conclusion": {
+        "cloud_resource_description_ids": [3]
+    },
+    "except_node_id": null,
+    "false_node_id": 8
+}

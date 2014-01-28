@@ -1,0 +1,11 @@
+{
+    "attributes": {
+        "id": 5,
+        "name": "Office Suite"
+    },
+    "providers": [
+        {
+            "name": "Google-Drive"
+        }
+    ]
+}

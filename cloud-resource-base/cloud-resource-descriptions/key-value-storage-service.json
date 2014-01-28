@@ -1,0 +1,12 @@
+{
+    "attributes": {
+        "id": 1,
+        "name": "S3 Storage",
+        "initial_capacity": "5GB"
+    },
+    "providers": [
+        {
+            "name": "AWS-S3"
+        }
+    ]
+}

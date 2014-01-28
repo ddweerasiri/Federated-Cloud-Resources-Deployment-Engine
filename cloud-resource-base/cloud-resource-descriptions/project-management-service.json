@@ -1,0 +1,12 @@
+{
+    "attributes": {
+        "id": 3,
+        "name": "Project Management Service",
+        "allocated_number_of_users": 55
+    },
+    "providers": [
+        {
+            "name": "Pivotal Tracker"
+        }
+    ]
+}

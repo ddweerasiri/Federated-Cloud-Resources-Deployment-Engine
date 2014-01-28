@@ -1,0 +1,11 @@
+{
+    "attributes": {
+        "id": 4,
+        "name": "GUI Prototyping Service"
+    },
+    "providers": [
+        {
+            "name": "LucidChart"
+        }
+    ]
+}

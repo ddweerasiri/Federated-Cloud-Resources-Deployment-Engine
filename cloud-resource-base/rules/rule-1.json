@@ -1,0 +1,11 @@
+{
+    "id": 1,
+    "condition": {
+        "task_category": ["Storage Management"]
+    },
+    "conclusion": {
+        "cloud_resource_description_ids": [1]
+    },
+    "except_node_id": 2,
+    "false_node_id": 3
+}

@@ -1,0 +1,12 @@
+{
+    "attributes": {
+        "id": 6,
+        "name": "Software Development Platform",
+        "allocated_number_of_students": 65
+    },
+    "providers": [
+        {
+            "name": "Heroku"
+        }
+    ]
+}

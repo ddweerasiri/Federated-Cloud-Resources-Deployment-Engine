@@ -1,0 +1,18 @@
+{
+    "attributes": {
+        "id": 7,
+        "name": "COMP9323 Course configuration",
+        "allocated_number_of_students": 65
+    },
+    "providers": [
+        {
+            "name": "CloudResourceBase",
+            "deploymentWorkflow": {
+                "controlFlow": {
+                    "deploymentBehavior": "PARALLEL",
+                    "componentResourceIDs": [1, 3, 5, 6]
+                }
+            }
+        }
+    ]
+}

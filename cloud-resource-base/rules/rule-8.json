@@ -1,0 +1,11 @@
+{
+    "id": 8,
+    "condition": {
+        "task_category": ["Office Suite Service"]
+    },
+    "conclusion": {
+        "cloud_resource_description_ids": [5]
+    },
+    "except_node_id": null,
+    "false_node_id": 9
+}
