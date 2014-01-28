@@ -2,7 +2,7 @@
 <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/processdef">
   <process id="process" isExecutable="true">
     <startEvent id="sid-68A07DA7-71B5-4D80-B812-D593A780AFA9"></startEvent>
-    <serviceTask id="sid-E184CCFA-9E3B-43D2-9BAC-FBCB3ACDDD5C" name="AWS-EC2-Deplpoyer" activiti:class="au.edu.unsw.cse.soc.federatedcloud.bpmn.servicetask.aws.ec2.AWSEC2Connecter"></serviceTask>
+    <serviceTask id="sid-E184CCFA-9E3B-43D2-9BAC-FBCB3ACDDD5C" name="AWS-EC2-Deplpoyer" activiti:class="au.edu.unsw.cse.soc.federatedcloud.bpmn.servicetask.CloudBaseJobDispatcher"></serviceTask>
     <endEvent id="sid-C63AD7CD-1644-4B77-8A6F-ADA93E75EFEA"></endEvent>
     <sequenceFlow id="sid-84E474F0-57EE-4C74-A915-534290D112D5" sourceRef="sid-68A07DA7-71B5-4D80-B812-D593A780AFA9" targetRef="sid-E184CCFA-9E3B-43D2-9BAC-FBCB3ACDDD5C"></sequenceFlow>
     <sequenceFlow id="sid-414CA90F-E5A4-4B58-974E-9CD32EC6E116" sourceRef="sid-E184CCFA-9E3B-43D2-9BAC-FBCB3ACDDD5C" targetRef="sid-C63AD7CD-1644-4B77-8A6F-ADA93E75EFEA"></sequenceFlow>

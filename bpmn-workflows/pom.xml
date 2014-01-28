@@ -60,6 +60,7 @@
             <groupId>au.edu.unsw.cse.soc.federatedcloud</groupId>
             <artifactId>deployment-engine</artifactId>
             <version>1.0-SNAPSHOT</version>
+            <classifier>classes</classifier>
         </dependency>
     </dependencies>
     <build>
