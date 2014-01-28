@@ -24,14 +24,25 @@ import au.edu.unsw.cse.soc.federatedcloud.datamodel.Provider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import java.io.File;
 
 /**
  * User: denis
  * Interpret a workflow xml and execute actions
  */
+@Path("/engine")
 public class CloudResourceBaseDeploymentEngine {
-    private static final Logger logger = LoggerFactory.getLogger(CloudResourceBaseDeploymentEngine.class);
+    private static final Logger log = LoggerFactory.getLogger(CloudResourceBaseDeploymentEngine.class);
+    @Path("/deploy")
+    @GET
+    @Produces(MediaType.TEXT_PLAIN)
+    public String deployAllTemplateActionCardsByServiceId_GET(/*@QueryParam("description_id")  String description_id*/) {
+        log.info("Deployment Request Received");
+        return "Deployment Request Received";
+    }
 
     public static void main(String[] args) throws Exception {
         File file = new File("cloud-resource-base/SENG1031.json");   // cloud resource to be deployed as the input
