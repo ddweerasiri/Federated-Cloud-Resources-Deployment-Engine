@@ -17,7 +17,6 @@ package au.edu.unsw.cse.soc.federatedcloud;
 
 
 import au.edu.unsw.cse.soc.federatedcloud.datamodel.CloudResourceDescription;
-import au.edu.unsw.cse.soc.federatedcloud.datamodel.Constants;
 import au.edu.unsw.cse.soc.federatedcloud.datamodel.Provider;
 import au.edu.unsw.cse.soc.federatedcloud.deployers.CloudResourceDeployer;
 import au.edu.unsw.cse.soc.federatedcloud.deployers.DeployerFactory;
@@ -41,18 +40,28 @@ public class CloudResourceBaseDeploymentEngine {
     @Path("/deploy")
     @GET
     @Produces(MediaType.TEXT_PLAIN)
-    public String deployAllTemplateActionCardsByServiceId_GET(@QueryParam("description_id")  String description_id) {
-        log.info("Deployment Request Received");
-        return "Deployment Request Received";
+    public String deployCloudResourceDescription(@QueryParam("description_id")  String description_id) {
+        log.info("Deployment Request Received for id: " + description_id);
+
+        try {
+            CloudResourceDescription desc = DataModelUtil.buildCouldResourceDescriptionFromJSON(Integer.parseInt(description_id));
+            CloudResourceBaseDeploymentEngine engine = new CloudResourceBaseDeploymentEngine();
+            engine.deployCloudResourceDescription(desc);
+            log.info("Deployed Resource:" + desc.toString());
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+        }
+
+        return "Resource Deployed";
     }
 
     public static void main(String[] args) throws Exception {
-        File file = new File("cloud-resource-base/SENG1031.json");   // cloud resource to be deployed as the input
+        //File file = new File("cloud-resource-base/SENG1031.json");   // cloud resource to be deployed as the input
         //File file = new File("cloud-resource-base/computing-server.json");   // cloud resource to be deployed as the input
-        //File file = new File("cloud-resource-base/key-value-storage-service.json");   // cloud resource to be deployed as the input
+        //File file = new File("/Users/denis/Dropbox/Documents/UNSW/Projects/github/Federated-Cloud-Resources-Deployment-Engine/cloud-resource-base/cloud-resource-descriptions/key-value-storage-service.json");   // cloud resource to be deployed as the input
 
         CloudResourceBaseDeploymentEngine engine = new CloudResourceBaseDeploymentEngine();
-        engine.deployCloudResourceDescription(file);
+        engine.deployCloudResourceDescription(1);
 
     }
 
@@ -75,14 +84,7 @@ public class CloudResourceBaseDeploymentEngine {
      * @throws Exception
      */
     public void deployCloudResourceDescription(CloudResourceDescription description) throws Exception {
-        Provider provider;
-        try {
-            //check whether the cloud resource has the provider named {@code Constants.CLOUD_RESOURCE_BASE_PROVIDER_NAME}, which is used to deploy the composite resources
-            provider = description.getProvider(Constants.CLOUD_RESOURCE_BASE_PROVIDER_NAME);
-        } catch (RuntimeException rex) {
-            //if the provider named {@code Constants.CLOUD_RESOURCE_BASE_PROVIDER_NAME} does not exist, one of other provider is used
-            provider = description.getProvider();
-        }
+        Provider provider = description.getProvider();
 
         CloudResourceDeployer deployer = DeployerFactory.build(provider.getName());
         deployer.deploy(description);

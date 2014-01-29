@@ -15,6 +15,7 @@ package au.edu.unsw.cse.soc.federatedcloud.deployers;
  * limitations under the License.
  */
 
+import au.edu.unsw.cse.soc.federatedcloud.deployers.aws.AWSS3Deployer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -26,27 +27,27 @@ public class DeployerFactory {
     private static final Logger logger = LoggerFactory.getLogger(DeployerFactory.class);
 
     public static CloudResourceDeployer build(String provider) throws Exception {
-        /*if (Constants.CLOUD_RESOURCE_BASE_PROVIDER_NAME.equals(provider)) {
+        if ("AWS-S3".equals(provider)) {
+            return new AWSS3Deployer();
+        }
+        /*if ("CloudResourceBase".equals(provider)) {
             return new CloudBaseDeployer();
         } else if ("Pivotal Tracker".equals(provider)) {
             return new PivotalTrackerDeployer();
         } else if ("LucidChart".equals(provider)) {
             return new LucidChartDeployer();
         } else if ("AWS-S3".equals(provider)) {
-            //return new AWSS3Deployer();
-            return null;
+            return new AWSS3Deployer();
         } else if ("Rackspace".equals(provider)) {
-            //return new RackspaceDeployer();
-            return null;
+            return new RackspaceDeployer();
         } else if ("Google Cloud Storage".equals(provider)) {
             return new GoogleCloudDeployer();
         } else if ("Google-Drive".equals(provider)) {
             return new GoogleDriveDeployer();
         } else if ("Heroku".equals(provider)) {
             return new HerokuDeployer();
-        } else {
+        }*/ else {
             throw new Exception("Deployer class is not registered for the provider \"" + provider + "\" in DeployerFactory.");
-        }*/
-        return null;
+        }
     }
 }

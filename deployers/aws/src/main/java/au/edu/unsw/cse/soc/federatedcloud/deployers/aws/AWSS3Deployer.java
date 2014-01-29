@@ -37,7 +37,7 @@ public class AWSS3Deployer implements CloudResourceDeployer {
     public void deploy(CloudResourceDescription description) throws Exception {
         //Reading the credentials
         Properties properties = new Properties();
-        properties.load(new FileInputStream("AWS-Deployers/src/main/resources/AwsCredentials.properties"));
+        properties.load(this.getClass().getResourceAsStream("/AwsCredentials.properties"));
         String accessKey = properties.getProperty("accessKey");
         String secretKey = properties.getProperty("secretKey");
 

@@ -1,7 +1,7 @@
 {
     "attributes": {
         "id": 1,
-        "name": "S3 Storage",
+        "name": "bucket-1",
         "initial_capacity": "5GB"
     },
     "providers": [

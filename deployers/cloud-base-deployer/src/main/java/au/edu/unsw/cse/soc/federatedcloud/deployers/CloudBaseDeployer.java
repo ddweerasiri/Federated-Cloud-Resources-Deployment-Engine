@@ -31,7 +31,7 @@ public class CloudBaseDeployer implements CloudResourceDeployer {
     private static final Logger logger = LoggerFactory.getLogger(CloudBaseDeployer.class);
 
     public void deploy(CloudResourceDescription description) throws IOException {
-        Provider provider = description.getProvider(Constants.CLOUD_RESOURCE_BASE_PROVIDER_NAME);
+        Provider provider = description.getProvider("CloudResourceBase");
         CloudResourcesComposition compositionWorkflow = provider.getDeploymentWorkflow();
 
         Behavior behavior = compositionWorkflow.getControlFlow().getDeploymentBehavior();

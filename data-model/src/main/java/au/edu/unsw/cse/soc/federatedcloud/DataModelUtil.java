@@ -49,7 +49,8 @@ public class DataModelUtil {
      * @throws Exception
      */
     public static CloudResourceDescription buildCouldResourceDescriptionFromJSON(int cloudResourceID) throws Exception {
-        return searchFolder("./cloud-resource-base", Pattern.compile("(?i).*\\.json$"), cloudResourceID);
+        return searchFolder("/Users/denis/Dropbox/Documents/UNSW/Projects/github/Federated-Cloud-Resources-Deployment-Engine/" +
+                "cloud-resource-base/cloud-resource-descriptions", Pattern.compile("(?i).*\\.json$"), cloudResourceID);
     }
 
     /**
@@ -71,6 +72,9 @@ public class DataModelUtil {
                 if (isEqual) {
                     return description;
                 }
+            } else if (item.isFile() && !filePattern.matcher(item.getName()).matches()) {
+                //ignore files that does not meet the patter
+                continue;
             } else {
                 String errorMsg = "Expected cloud resource description with \"id\": " + cloudResourceDescriptionID +
                         " was not found.";
