@@ -18,10 +18,9 @@ package au.edu.unsw.cse.soc.federatedcloud.deployers.rackspace;
 import au.edu.unsw.cse.soc.federatedcloud.datamodel.CloudResourceDescription;
 import au.edu.unsw.cse.soc.federatedcloud.deployers.CloudResourceDeployer;
 import org.jclouds.compute.domain.NodeMetadata;
+import org.jclouds.examples.rackspace.cloudservers.CreateServer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import org.jclouds.examples.rackspace.cloudservers.CreateServer;
 
 import java.io.FileInputStream;
 import java.util.Properties;

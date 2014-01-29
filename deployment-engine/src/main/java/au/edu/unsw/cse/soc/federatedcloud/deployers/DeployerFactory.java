@@ -15,7 +15,6 @@ package au.edu.unsw.cse.soc.federatedcloud.deployers;
  * limitations under the License.
  */
 
-import au.edu.unsw.cse.soc.federatedcloud.datamodel.Constants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

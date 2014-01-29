@@ -16,17 +16,19 @@ package au.edu.unsw.cse.soc.federatedcloud;
  */
 
 
-import au.edu.unsw.cse.soc.federatedcloud.deployers.CloudResourceDeployer;
-import au.edu.unsw.cse.soc.federatedcloud.deployers.DeployerFactory;
 import au.edu.unsw.cse.soc.federatedcloud.datamodel.CloudResourceDescription;
 import au.edu.unsw.cse.soc.federatedcloud.datamodel.Constants;
 import au.edu.unsw.cse.soc.federatedcloud.datamodel.Provider;
+import au.edu.unsw.cse.soc.federatedcloud.deployers.CloudResourceDeployer;
+import au.edu.unsw.cse.soc.federatedcloud.deployers.DeployerFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.ws.rs.*;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 import java.io.File;
 
 /**
@@ -39,7 +41,7 @@ public class CloudResourceBaseDeploymentEngine {
     @Path("/deploy")
     @GET
     @Produces(MediaType.TEXT_PLAIN)
-    public String deployAllTemplateActionCardsByServiceId_GET(/*@QueryParam("description_id")  String description_id*/) {
+    public String deployAllTemplateActionCardsByServiceId_GET(@QueryParam("description_id")  String description_id) {
         log.info("Deployment Request Received");
         return "Deployment Request Received";
     }

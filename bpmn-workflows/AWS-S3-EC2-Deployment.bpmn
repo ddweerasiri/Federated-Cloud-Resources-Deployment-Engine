@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test">
-  <process id="myProcess" name="My process" isExecutable="true">
-    <serviceTask id="aws-ec2-task" name="AWS-EC2 Deploy" activiti:class="au.edu.unsw.cse.soc.federatedcloud.bpmn.servicetask.CloudBaseJobDispatcher"></serviceTask>
-    <serviceTask id="aws-s3-task" name="AWS-S3 Deploy" activiti:class="au.edu.unsw.cse.soc.federatedcloud.bpmn.servicetask.CloudBaseJobDispatcher"></serviceTask>
+  <process id="aws-s3-ec2-deployment-process" name="AWS S3 and EC2 resource deployment process" isExecutable="true">
+    <serviceTask id="aws-ec2-task" name="AWS-EC2 Deploy" activiti:class="au.edu.unsw.cse.soc.federatedcloud.bpmn.servicetask.CloudBaseJobDispatcher">
+        <extensionElements>
+            <activiti:field name="resourceID" stringValue="1" />
+        </extensionElements>
+    </serviceTask>
+    <serviceTask id="aws-s3-task" name="AWS-S3 Deploy" activiti:class="au.edu.unsw.cse.soc.federatedcloud.bpmn.servicetask.CloudBaseJobDispatcher">
+        <extensionElements>
+            <activiti:field name="resourceID" stringValue="1" />
+        </extensionElements>
+    </serviceTask>
     <startEvent id="startevent1" name="Start"></startEvent>
     <sequenceFlow id="flow1" sourceRef="startevent1" targetRef="aws-ec2-task" ></sequenceFlow>
     <sequenceFlow id="flow2" sourceRef="aws-ec2-task" targetRef="aws-s3-task" ></sequenceFlow>
     <endEvent id="endevent1" name="End"></endEvent>
     <sequenceFlow id="flow3" sourceRef="aws-s3-task" targetRef="endevent1"></sequenceFlow>
   </process>
-  <bpmndi:BPMNDiagram id="BPMNDiagram_myProcess">
-    <bpmndi:BPMNPlane bpmnElement="myProcess" id="BPMNPlane_myProcess">
+  <bpmndi:BPMNDiagram id="BPMNDiagram_aws-s3-ec2-deployment-process">
+    <bpmndi:BPMNPlane bpmnElement="aws-s3-ec2-deployment-process" id="BPMNPlane_aws-s3-ec2-deployment-process">
       <bpmndi:BPMNShape bpmnElement="aws-ec2-task" id="BPMNShape_aws-ec2-task">
         <omgdc:Bounds height="55.0" width="105.0" x="380.0" y="250.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
