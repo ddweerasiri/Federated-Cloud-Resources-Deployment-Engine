@@ -4,9 +4,9 @@
         "name": "Project Management Service",
         "allocated_number_of_users": 55
     },
-    "providers": [
+    "deployers": [
         {
-            "name": "Pivotal Tracker"
+            "name": "au.edu.unsw.cse.soc.federatedcloud.deployers.PivotalTrackerDeployer"
         }
     ]
 }

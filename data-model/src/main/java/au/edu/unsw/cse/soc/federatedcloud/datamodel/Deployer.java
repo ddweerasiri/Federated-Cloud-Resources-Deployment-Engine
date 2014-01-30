@@ -19,7 +19,7 @@ package au.edu.unsw.cse.soc.federatedcloud.datamodel;
  * User: denis
  * Represent the Deployment script deploymentWorkflow of a Cloud resource
  */
-public class Provider {
+public class Deployer {
     private String name;
     private CloudResourcesComposition deploymentWorkflow;
 

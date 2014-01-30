@@ -35,42 +35,42 @@ public class CloudResourceDescription {
 
     HashMap<String, String> attributes;
 
-    public HashSet<Provider> getProviders() {
-        return providers;
+    public HashSet<Deployer> getDeployers() {
+        return deployers;
     }
 
     /**
-     * Extract the Provider with a specific providerName from the cloud resource description
+     * Extract the Deployer with a specific deployerName from the cloud resource description
      *
-     * @param providerName
+     * @param deployerName
      * @return
      */
-    public Provider getProvider(String providerName) {
-        for (Iterator<Provider> it = providers.iterator(); it.hasNext(); ) {
-            Provider provider1 = it.next();
-            if (provider1.getName().equals(provider1.getName())) {
-                return provider1;
+    public Deployer getDeployer(String deployerName) {
+        for (Iterator<Deployer> it = deployers.iterator(); it.hasNext(); ) {
+            Deployer deployer = it.next();
+            if (deployer.getName().equals(deployer.getName())) {
+                return deployer;
             }
         }
-        throw new RuntimeException("Provider with name:\"" + providerName + "\" was no found.");
+        throw new RuntimeException("Deployer with name:\"" + deployerName + "\" was no found.");
 
     }
 
     /**
-     * Extract the provider from the cloud resource description. (When there are multiple providers,
-     * only the first provider is returned)
+     * Extract the Deployer from the cloud resource description. (When there are multiple deployers,
+     * only the first deployer is returned)
      *
      * @return
      */
-    public Provider getProvider() {
-        for (Iterator<Provider> it = providers.iterator(); it.hasNext(); ) {
-            Provider provider = it.next();
-            return provider;
+    public Deployer getDeployer() {
+        for (Iterator<Deployer> it = deployers.iterator(); it.hasNext(); ) {
+            Deployer deployer = it.next();
+            return deployer;
         }
-        throw new RuntimeException("No Provider found.");
+        throw new RuntimeException("No Deployer found.");
     }
 
-    HashSet<Provider> providers;
+    HashSet<Deployer> deployers;
 
     /**
      * Extract the ID of the cloud resource description

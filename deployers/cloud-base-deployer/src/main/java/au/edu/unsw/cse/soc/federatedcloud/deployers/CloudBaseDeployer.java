@@ -16,7 +16,10 @@ package au.edu.unsw.cse.soc.federatedcloud.deployers;
  */
 
 import au.edu.unsw.cse.soc.federatedcloud.CloudResourceBaseDeploymentEngine;
-import au.edu.unsw.cse.soc.federatedcloud.datamodel.*;
+import au.edu.unsw.cse.soc.federatedcloud.datamodel.Behavior;
+import au.edu.unsw.cse.soc.federatedcloud.datamodel.CloudResourceDescription;
+import au.edu.unsw.cse.soc.federatedcloud.datamodel.CloudResourcesComposition;
+import au.edu.unsw.cse.soc.federatedcloud.datamodel.Deployer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -31,8 +34,8 @@ public class CloudBaseDeployer implements CloudResourceDeployer {
     private static final Logger logger = LoggerFactory.getLogger(CloudBaseDeployer.class);
 
     public void deploy(CloudResourceDescription description) throws IOException {
-        Provider provider = description.getProvider("CloudResourceBase");
-        CloudResourcesComposition compositionWorkflow = provider.getDeploymentWorkflow();
+        Deployer deployer = description.getDeployer("au.edu.unsw.cse.soc.federatedcloud.deployers.CloudBaseDeployer");
+        CloudResourcesComposition compositionWorkflow = deployer.getDeploymentWorkflow();
 
         Behavior behavior = compositionWorkflow.getControlFlow().getDeploymentBehavior();
         HashSet<Integer> componentResourceIDs = compositionWorkflow.getControlFlow().getComponentResourceIDs();

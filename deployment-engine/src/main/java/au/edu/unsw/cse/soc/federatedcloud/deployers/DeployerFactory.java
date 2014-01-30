@@ -15,39 +15,43 @@ package au.edu.unsw.cse.soc.federatedcloud.deployers;
  * limitations under the License.
  */
 
-import au.edu.unsw.cse.soc.federatedcloud.deployers.aws.AWSS3Deployer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
  * User: denis
- * Factory class to generate deployers for the given Provider
+ * Factory class to generate deployers for the given Deployer
  */
 public class DeployerFactory {
     private static final Logger logger = LoggerFactory.getLogger(DeployerFactory.class);
 
-    public static CloudResourceDeployer build(String provider) throws Exception {
-        if ("AWS-S3".equals(provider)) {
-            return new AWSS3Deployer();
+    public static CloudResourceDeployer build(String deployerName) throws Exception {
+        try {
+            CloudResourceDeployer deployer = (CloudResourceDeployer) Class.forName(deployerName).newInstance();
+            return deployer;
+        } catch (Exception ex) {
+            logger.error(ex.getMessage(), ex);
+            throw ex;
         }
-        /*if ("CloudResourceBase".equals(provider)) {
+
+        /*if ("au.edu.unsw.cse.soc.federatedcloud.deployers.CloudBaseDeployer".equals(deployerName)) {
             return new CloudBaseDeployer();
-        } else if ("Pivotal Tracker".equals(provider)) {
+        } else if ("Pivotal Tracker".equals(deployerName)) {
             return new PivotalTrackerDeployer();
-        } else if ("LucidChart".equals(provider)) {
+        } else if ("LucidChart".equals(deployerName)) {
             return new LucidChartDeployer();
-        } else if ("AWS-S3".equals(provider)) {
+        } else if ("AWS-S3".equals(deployerName)) {
             return new AWSS3Deployer();
-        } else if ("Rackspace".equals(provider)) {
+        } else if ("Rackspace".equals(deployerName)) {
             return new RackspaceDeployer();
-        } else if ("Google Cloud Storage".equals(provider)) {
+        } else if ("Google Cloud Storage".equals(deployerName)) {
             return new GoogleCloudDeployer();
-        } else if ("Google-Drive".equals(provider)) {
+        } else if ("Google-Drive".equals(deployerName)) {
             return new GoogleDriveDeployer();
-        } else if ("Heroku".equals(provider)) {
+        } else if ("Heroku".equals(deployerName)) {
             return new HerokuDeployer();
-        }*/ else {
-            throw new Exception("Deployer class is not registered for the provider \"" + provider + "\" in DeployerFactory.");
-        }
+        } else {
+            throw new Exception("Deployer class is not registered for the deployerName \"" + deployerName + "\" in DeployerFactory.");
+        }*/
     }
 }

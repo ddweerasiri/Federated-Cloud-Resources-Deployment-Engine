@@ -4,6 +4,10 @@
     <serviceTask id="aws-ec2-task" name="AWS-EC2 Deploy" activiti:class="au.edu.unsw.cse.soc.federatedcloud.bpmn.servicetask.CloudBaseJobDispatcher">
         <extensionElements>
             <activiti:field name="resourceID" stringValue="1" />
+            <activiti:field name="resourceDescription" >
+                <activiti:string>{"id": 1, "name": "ddweerasiri-bucket-1", "initial_capacity": "5GB"}
+                </activiti:string>
+            </activiti:field>
         </extensionElements>
     </serviceTask>
     <serviceTask id="aws-s3-task" name="AWS-S3 Deploy" activiti:class="au.edu.unsw.cse.soc.federatedcloud.bpmn.servicetask.CloudBaseJobDispatcher">

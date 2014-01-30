@@ -17,18 +17,17 @@ package au.edu.unsw.cse.soc.federatedcloud;
 
 
 import au.edu.unsw.cse.soc.federatedcloud.datamodel.CloudResourceDescription;
-import au.edu.unsw.cse.soc.federatedcloud.datamodel.Provider;
+import au.edu.unsw.cse.soc.federatedcloud.datamodel.Deployer;
 import au.edu.unsw.cse.soc.federatedcloud.deployers.CloudResourceDeployer;
 import au.edu.unsw.cse.soc.federatedcloud.deployers.DeployerFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.io.File;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 
 /**
  * User: denis
@@ -38,10 +37,15 @@ import java.io.File;
 public class CloudResourceBaseDeploymentEngine {
     private static final Logger log = LoggerFactory.getLogger(CloudResourceBaseDeploymentEngine.class);
     @Path("/deploy")
-    @GET
+    @POST
     @Produces(MediaType.TEXT_PLAIN)
-    public String deployCloudResourceDescription(@QueryParam("description_id")  String description_id) {
+    public String deployCloudResourceDescription(@QueryParam("description_id")  String description_id, @QueryParam("description_json") @DefaultValue("{}")  String description) {
         log.info("Deployment Request Received for id: " + description_id);
+        try {
+            log.info("Input Resource description: " + URLDecoder.decode(description, "UTF-8"));
+        } catch (UnsupportedEncodingException e) {
+            log.error(e.getMessage(), e);
+        }
 
         try {
             CloudResourceDescription desc = DataModelUtil.buildCouldResourceDescriptionFromJSON(Integer.parseInt(description_id));
@@ -84,10 +88,10 @@ public class CloudResourceBaseDeploymentEngine {
      * @throws Exception
      */
     public void deployCloudResourceDescription(CloudResourceDescription description) throws Exception {
-        Provider provider = description.getProvider();
+        Deployer deployer = description.getDeployer();
 
-        CloudResourceDeployer deployer = DeployerFactory.build(provider.getName());
-        deployer.deploy(description);
+        CloudResourceDeployer cloudResourceDeployer = DeployerFactory.build(deployer.getName());
+        cloudResourceDeployer.deploy(description);
     }
 
     /**

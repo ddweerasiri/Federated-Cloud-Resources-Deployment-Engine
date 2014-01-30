@@ -4,9 +4,9 @@
         "name": "Software Development Platform",
         "allocated_number_of_students": 65
     },
-    "providers": [
+    "deployers": [
         {
-            "name": "Heroku"
+            "name": "au.edu.unsw.cse.soc.federatedcloud.deployers.HerokuDeployer"
         }
     ]
 }

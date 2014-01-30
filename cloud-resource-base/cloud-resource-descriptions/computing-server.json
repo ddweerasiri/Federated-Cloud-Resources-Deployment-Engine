@@ -5,9 +5,9 @@
         "operating-system": "ubuntu-12.04",
         "memory": 1024
     },
-    "providers": [
+    "deployers": [
         {
-            "name": "Rackspace"
+            "name": "au.edu.unsw.cse.soc.federatedcloud.deployers.rackspace.RackspaceDeployer"
         }
     ]
 }

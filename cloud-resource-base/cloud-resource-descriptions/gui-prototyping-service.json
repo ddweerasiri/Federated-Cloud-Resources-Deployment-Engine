@@ -3,9 +3,9 @@
         "id": 4,
         "name": "GUI Prototyping Service"
     },
-    "providers": [
+    "deployers": [
         {
-            "name": "LucidChart"
+            "name": "au.edu.unsw.cse.soc.federatedcloud.deployers.LucidChartDeployer"
         }
     ]
 }

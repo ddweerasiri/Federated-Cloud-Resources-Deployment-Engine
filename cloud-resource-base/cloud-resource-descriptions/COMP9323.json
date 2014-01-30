@@ -4,9 +4,9 @@
         "name": "COMP9323 Course configuration",
         "allocated_number_of_students": 65
     },
-    "providers": [
+    "deployers": [
         {
-            "name": "CloudResourceBase",
+            "name": "au.edu.unsw.cse.soc.federatedcloud.deployers.CloudBaseDeployer",
             "deploymentWorkflow": {
                 "controlFlow": {
                     "deploymentBehavior": "PARALLEL",

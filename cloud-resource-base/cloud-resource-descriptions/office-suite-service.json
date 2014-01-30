@@ -3,9 +3,9 @@
         "id": 5,
         "name": "Office Suite"
     },
-    "providers": [
+    "deployers": [
         {
-            "name": "Google-Drive"
+            "name": "au.edu.unsw.cse.soc.federatedcloud.deployers.GoogleDriveDeployer"
         }
     ]
 }
