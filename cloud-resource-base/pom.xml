@@ -15,6 +15,9 @@
     <modules>
         <module>rules</module>
         <module>cloud-resource-descriptions</module>
+        <module>java-client</module>
     </modules>
+
+
 
 </project>

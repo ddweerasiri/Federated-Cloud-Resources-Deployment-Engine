@@ -22,8 +22,11 @@ import com.dkhenry.RethinkDB.errors.RqlDriverException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.regex.Pattern;
 
 /**
  * User: denis
@@ -32,40 +35,39 @@ import java.util.HashMap;
 public class DBClient {
     private static final Logger log = LoggerFactory.getLogger(DBClient.class);
 
-    public static void main(String[] args) throws RqlDriverException {
+    public static void main(String[] args) throws RqlDriverException, IOException {
         RqlConnection r = RqlConnection.connect("localhost", 28015);
-        // Any use of db set the default db
-        r.db("test1").table_create("characters");
 
-        RqlTopLevelQuery.DbList list = r.db_list();
-        RqlCursor cursor = r.run(list);
+        //r.run(r.db_create("cloudResourceBase"));
+        //r.run(r.db("cloudResourceBase").table_create("cloudResourceDescriptions"));
+        //r.run(r.db("cloudResourceBase").table_create("mappingRules"));
 
-        // A simple Insert
-        r.db("test1").table("characters").insert(Arrays.asList(
-                new HashMap() {{
-                    put("name", "Worf");
-                    put("show", "Star Trek TNG");
-                }},
-                new HashMap() {{
-                    put("name", "Data");
-                    put("show", "Star Trek TNG");
-                }},
-                new HashMap() {{
-                    put("name", "William Adama");
-                    put("show", "Battlestar Galactica");
-                }},
-                new HashMap() {{
-                    put("name", "Homer Simpson");
-                    put("show", "The Simpsons");
-                }}
-        ));
+        insertCloudResourceDescriptions(r);
+        insertMappingRules(r);
 
-        // Then a Simple Query
-        r.table("tv_shows").filter(new HashMap() {{
-            put("name", "Star Trek TNG");
-        }});
-        // Returns Array(HashMap( ("name","Worf") , ("show","Star Trek TNG") ),HashMap( ("name","Data") , ("show","Star Trek TNG") ))
 
         r.close();
+
+    }
+
+    private static void insertMappingRules(RqlConnection r) throws IOException, RqlDriverException {
+        File dir = new File("/Users/denis/Dropbox/Documents/UNSW/Projects/github/Federated-Cloud-Resources-Deployment-Engine/cloud-resource-base/rules");
+        instertFilesToDB(dir, r);
+    }
+
+    private static void insertCloudResourceDescriptions(RqlConnection r) throws RqlDriverException, IOException {
+        File dir = new File("/Users/denis/Dropbox/Documents/UNSW/Projects/github/Federated-Cloud-Resources-Deployment-Engine/cloud-resource-base/cloud-resource-descriptions");
+        instertFilesToDB(dir, r);
+    }
+
+    private static void instertFilesToDB(File directory, RqlConnection r) throws IOException, RqlDriverException {
+        Pattern filePattern = Pattern.compile("(?i).*\\.json$");
+        for (File item : directory.listFiles()) {
+            if (item.isFile() && filePattern.matcher(item.getName()).matches()) {
+                String json = DataUtil.fileToString(item);
+                HashMap map = (HashMap) DataUtil.convertJSONToMap(json);
+                r.run(r.db("cloudResourceBase").table("cloudResourceDescriptions").insert(map));
+            }
+        }
     }
 }
