@@ -1,0 +1,62 @@
+{
+    "orchestrationWorkflow": {
+        "componentStates": [
+            {
+                "State": {
+                    "id": "startState",
+                    "resourceID": null
+                }
+            },
+            {
+                "State": {
+                    "id": "st1",
+                    "resourceID": "res1"
+                }
+            },
+            {
+                "State": {
+                    "id": "st2",
+                    "resourceID": "res2"
+                }
+            },
+            {
+                "State": {
+                    "id": "st3",
+                    "resourceID": "res1"
+                }
+            },
+            {
+                "State": {
+                    "id": "endState",
+                    "resourceID": null
+                }
+            }
+        ],
+        "transitions": [
+            {
+                "id": 0,
+                "sourceStateID": "startState",
+                "targetStateID": "st1",
+                "ECARuleIDs": []
+            },
+            {
+                "id": 1,
+                "sourceStateID": "st1",
+                "targetStateID": "st2",
+                "ECARuleIDs": ["r1"]
+            },
+            {
+                "id": 2,
+                "sourceStateID": "st2",
+                "targetStateID": "st3",
+                "ECARuleIDs": ["r2", "r3"]
+            },
+            {
+                "id": 3,
+                "sourceStateID": "st3",
+                "targetStateID": "endState",
+                "ECARuleIDs": ["r4"]
+            }
+        ]
+    }
+}
