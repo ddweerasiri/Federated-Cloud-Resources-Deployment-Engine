@@ -1,4 +1,4 @@
-package au.edu.unsw.cse.soc.federatedcloud.orchestrator;
+package au.edu.unsw.cse.soc.federatedcloud.orchestrator.datamodel.workflow;
 /*
  * Copyright (c) 2014, Denis Weerasiri All Rights Reserved.
  *
@@ -20,8 +20,8 @@ import org.slf4j.LoggerFactory;
 
 /**
  * User: denis
- * Represent a Transition in the State Machine
+ * Represent a ECA Rule
  */
-public class Transition {
-    private static final Logger log = LoggerFactory.getLogger(Transition.class);
+public class ECARule {
+    private static final Logger log = LoggerFactory.getLogger(ECARule.class);
 }

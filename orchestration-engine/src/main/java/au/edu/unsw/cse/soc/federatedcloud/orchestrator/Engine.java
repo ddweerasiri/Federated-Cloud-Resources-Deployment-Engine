@@ -15,6 +15,7 @@ package au.edu.unsw.cse.soc.federatedcloud.orchestrator;
  * limitations under the License.
  */
 
+import au.edu.unsw.cse.soc.federatedcloud.orchestrator.datamodel.workflow.Transition;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -29,10 +30,61 @@ public class Engine {
     ExecutionContext context = new ExecutionContext();
 
     public static void main(String[] args) {
+        startEventGenerator();
+
+        startOrchestrationEngine();
+    }
+
+    /**
+     * Starts the engine
+     */
+    public void startOrchestrationEngine() {
+        startEventListener();
+    }
+
+    /**
+     * Create a object of the Orchestrator Workflow
+     */
+    public OrchestratorWorkflow buildOrchestratorWorkflow(File workflow) {
 
     }
 
-    public void executeTransition(Event event) {
+    /**
+     * Deploy a workflow object
+     * @param workflow
+     * @return
+     */
+    public boolean deployOrchestratorWorkflow (OrchestratorWorkflow workflow) {
+
+    }
+
+    /**
+     * Start a dummy event generator
+     */
+    private void startEventGenerator() {
+
+    }
+
+    /**
+     * Start the event listener
+     */
+    private void startEventListener() {
+
+    }
+
+    /**
+     * Triggered at each event
+     * @param event
+     */
+    private void onEvent(Event event) {
+        executeTransition(event);
+    }
+
+    /**
+     * Invoke during a state transition
+     * @param event
+     */
+    private void executeTransition(Event event) {
         List<Transition> transitions = null;
         for (Transition t : transitions) {
             if (context.getActiveState().getID() == t.getSourceState().getID()) {
