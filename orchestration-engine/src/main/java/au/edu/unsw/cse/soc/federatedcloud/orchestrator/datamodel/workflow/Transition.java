@@ -18,10 +18,49 @@ package au.edu.unsw.cse.soc.federatedcloud.orchestrator.datamodel.workflow;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.List;
+
 /**
  * User: denis
  * Represent a Transition in the State Machine
  */
 public class Transition {
     private static final Logger log = LoggerFactory.getLogger(Transition.class);
+
+    private int id;
+    private String sourceStateID;
+    private String targetStateID;
+    private List<String> eCARuleIDs;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getSourceStateID() {
+        return sourceStateID;
+    }
+
+    public void setSourceStateID(String sourceStateID) {
+        this.sourceStateID = sourceStateID;
+    }
+
+    public String getTargetStateID() {
+        return targetStateID;
+    }
+
+    public void setTargetStateID(String targetStateID) {
+        this.targetStateID = targetStateID;
+    }
+
+    public List<String> geteCARuleIDs() {
+        return eCARuleIDs;
+    }
+
+    public void seteCARuleIDs(List<String> eCARuleIDs) {
+        this.eCARuleIDs = eCARuleIDs;
+    }
 }

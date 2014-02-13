@@ -1,4 +1,4 @@
-package au.edu.unsw.cse.soc.federatedcloud.orchestrator;
+package au.edu.unsw.cse.soc.federatedcloud.orchestrator.eventprocesser;
 /*
  * Copyright (c) 2014, Denis Weerasiri All Rights Reserved.
  *
@@ -15,14 +15,24 @@ package au.edu.unsw.cse.soc.federatedcloud.orchestrator;
  * limitations under the License.
  */
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * User: denis
- * A dummy event generator
+ * Class that register and routes the events
  */
-public class SampleEventGenerator {
-    private static final Logger log = LoggerFactory.getLogger(SampleEventGenerator.class);
-}
 
+public class EventRouter {
+    private final Map<Class, EventHandler> eventHandlerMap = new HashMap<Class, EventHandler>();
+
+    public void sendEvent(final Event event) {
+        eventHandlerMap.get(event.getClass()).handle(event);
+    }
+
+    public void registerHandler(final Class eventClass, final EventHandler handler) {
+        eventHandlerMap.put(eventClass, handler);
+    }
+
+
+}

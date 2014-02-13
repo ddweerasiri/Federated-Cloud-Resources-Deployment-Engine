@@ -1,4 +1,4 @@
-package au.edu.unsw.cse.soc.federatedcloud.orchestrator.datamodel.workflow;
+package au.edu.unsw.cse.soc.federatedcloud.orchestrator;
 /*
  * Copyright (c) 2014, Denis Weerasiri All Rights Reserved.
  *
@@ -15,13 +15,24 @@ package au.edu.unsw.cse.soc.federatedcloud.orchestrator.datamodel.workflow;
  * limitations under the License.
  */
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 /**
  * User: denis
- * Represent the State Machine
+ * The singleton to hold the engine resource
  */
-public class Workflow {
-    private static final Logger log = LoggerFactory.getLogger(Workflow.class);
+public class OrchestrationEngineHolder {
+    private static OrchestrationEngineHolder instance = new OrchestrationEngineHolder();
+    private OrchestratorEngine orchestratorEngine;
+
+    private OrchestrationEngineHolder() {
+        orchestratorEngine = new OrchestratorEngine();
+    }
+
+    public OrchestratorEngine getOrchestratorEngine() {
+        return orchestratorEngine;
+    }
+
+    public static OrchestrationEngineHolder getInstance() {
+        return instance;
+    }
+
 }

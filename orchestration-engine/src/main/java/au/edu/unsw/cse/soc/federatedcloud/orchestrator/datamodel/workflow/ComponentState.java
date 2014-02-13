@@ -1,4 +1,5 @@
 package au.edu.unsw.cse.soc.federatedcloud.orchestrator.datamodel.workflow;
+
 /*
  * Copyright (c) 2014, Denis Weerasiri All Rights Reserved.
  *
@@ -15,20 +16,13 @@ package au.edu.unsw.cse.soc.federatedcloud.orchestrator.datamodel.workflow;
  * limitations under the License.
  */
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 /**
  * User: denis
- * Represent a ECA Rule
+ * Represent a rule of a transition
  */
-public class ECARule {
-    private static final Logger log = LoggerFactory.getLogger(ECARule.class);
-
+public class ComponentState {
     private String id;
-    private Event event;
-    private String condition;
-    private String action;
+    private String resourceID;
 
     public String getId() {
         return id;
@@ -38,27 +32,11 @@ public class ECARule {
         this.id = id;
     }
 
-    public Event getEvent() {
-        return event;
+    public String getResourceID() {
+        return resourceID;
     }
 
-    public void setEvent(Event event) {
-        this.event = event;
-    }
-
-    public String getCondition() {
-        return condition;
-    }
-
-    public void setCondition(String condition) {
-        this.condition = condition;
-    }
-
-    public String getAction() {
-        return action;
-    }
-
-    public void setAction(String action) {
-        this.action = action;
+    public void setResourceID(String resourceID) {
+        this.resourceID = resourceID;
     }
 }

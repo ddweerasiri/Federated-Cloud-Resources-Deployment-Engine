@@ -15,14 +15,14 @@ package au.edu.unsw.cse.soc.federatedcloud.orchestrator;
  * limitations under the License.
  */
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 /**
  * User: denis
- * A dummy event generator
+ * Thrown when a unspecified rule is referred during the runtime.
  */
-public class SampleEventGenerator {
-    private static final Logger log = LoggerFactory.getLogger(SampleEventGenerator.class);
-}
+public class ECARuleNotFoundException extends RuntimeException {
 
+
+    public ECARuleNotFoundException(String errorMsg) {
+        super(errorMsg);
+    }
+}

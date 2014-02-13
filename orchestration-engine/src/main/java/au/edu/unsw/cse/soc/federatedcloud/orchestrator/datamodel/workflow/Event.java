@@ -1,4 +1,4 @@
-package au.edu.unsw.cse.soc.federatedcloud.orchestrator;
+package au.edu.unsw.cse.soc.federatedcloud.orchestrator.datamodel.workflow;
 /*
  * Copyright (c) 2014, Denis Weerasiri All Rights Reserved.
  *
@@ -20,8 +20,27 @@ import org.slf4j.LoggerFactory;
 
 /**
  * User: denis
- * Represent an external event which is received by the Orchestrator Engine
+ * Represent the json data model for the event in a ECA rule
  */
 public class Event {
     private static final Logger log = LoggerFactory.getLogger(Event.class);
+
+    private int id;
+    private String context;
+
+    public String getContext() {
+        return context;
+    }
+
+    public void setContext(String context) {
+        this.context = context;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }

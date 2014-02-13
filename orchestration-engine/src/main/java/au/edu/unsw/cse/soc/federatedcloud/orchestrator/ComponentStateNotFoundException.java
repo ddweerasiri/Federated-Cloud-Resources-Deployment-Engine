@@ -15,14 +15,13 @@ package au.edu.unsw.cse.soc.federatedcloud.orchestrator;
  * limitations under the License.
  */
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 /**
  * User: denis
- * A dummy event generator
+ * Generated when a undefined Component State is referred from the Orchestration Engine.
  */
-public class SampleEventGenerator {
-    private static final Logger log = LoggerFactory.getLogger(SampleEventGenerator.class);
-}
+public class ComponentStateNotFoundException extends RuntimeException {
 
+    public ComponentStateNotFoundException(String errorMsg) {
+        super(errorMsg);
+    }
+}

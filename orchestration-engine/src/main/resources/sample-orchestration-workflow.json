@@ -1,62 +1,99 @@
 {
-    "orchestrationWorkflow": {
-        "componentStates": [
-            {
-                "State": {
-                    "id": "startState",
-                    "resourceID": null
-                }
+    "name": "sample-workflow-1",
+    "componentStates": [
+        {
+            "id": "startState",
+            "resourceID": null
+        },
+        {
+            "id": "st1",
+            "resourceID": "res1"
+        },
+        {
+            "id": "st2",
+            "resourceID": "res2"
+        },
+        {
+            "id": "st3",
+            "resourceID": "res1"
+        },
+        {
+            "id": "endState",
+            "resourceID": null
+        }
+    ],
+    "transitions": [
+        {
+            "id": 0,
+            "sourceStateID": "startState",
+            "targetStateID": "st1",
+            "eCARuleIDs": ["r0"]
+        },
+        {
+            "id": 1,
+            "sourceStateID": "st1",
+            "targetStateID": "st2",
+            "eCARuleIDs": ["r1"]
+        },
+        {
+            "id": 2,
+            "sourceStateID": "st2",
+            "targetStateID": "st3",
+            "eCARuleIDs": ["r2", "r3"]
+        },
+        {
+            "id": 3,
+            "sourceStateID": "st3",
+            "targetStateID": "endState",
+            "eCARuleIDs": ["r4"]
+        }
+    ],
+    "eCARules": [
+        {
+            "id": "r0",
+            "event": {
+                "id": 1000,
+                "context": "temporal"
             },
-            {
-                "State": {
-                    "id": "st1",
-                    "resourceID": "res1"
-                }
+            "condition": "true",
+            "action": null
+        },
+        {
+            "id": "r1",
+            "event": {
+                "id": 1001,
+                "context": "temporal"
             },
-            {
-                "State": {
-                    "id": "st2",
-                    "resourceID": "res2"
-                }
+            "condition": "true",
+            "action": null
+        },
+        {
+            "id": "r2",
+            "event": {
+                "id": 1002,
+                "context": "temporal"
             },
-            {
-                "State": {
-                    "id": "st3",
-                    "resourceID": "res1"
-                }
+            "condition": "true",
+            "action": null
+        },
+        {
+            "id": "r3",
+            "event": {
+                "id": 1003,
+                "context": "performance"
             },
-            {
-                "State": {
-                    "id": "endState",
-                    "resourceID": null
-                }
-            }
-        ],
-        "transitions": [
-            {
-                "id": 0,
-                "sourceStateID": "startState",
-                "targetStateID": "st1",
-                "ECARuleIDs": []
+            "condition": "true",
+            "action": null
+        },
+        {
+            "id": "r4",
+            "event": {
+                "id": 1004,
+                "context": "temporal"
             },
-            {
-                "id": 1,
-                "sourceStateID": "st1",
-                "targetStateID": "st2",
-                "ECARuleIDs": ["r1"]
-            },
-            {
-                "id": 2,
-                "sourceStateID": "st2",
-                "targetStateID": "st3",
-                "ECARuleIDs": ["r2", "r3"]
-            },
-            {
-                "id": 3,
-                "sourceStateID": "st3",
-                "targetStateID": "endState",
-                "ECARuleIDs": ["r4"]
-            }
-        ]
-    }
+            "condition": "true",
+            "action": null
+        }
+    ]
+
 }

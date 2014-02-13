@@ -1,4 +1,4 @@
-package au.edu.unsw.cse.soc.federatedcloud.orchestrator;
+package au.edu.unsw.cse.soc.federatedcloud.orchestrator.eventprocesser;
 /*
  * Copyright (c) 2014, Denis Weerasiri All Rights Reserved.
  *
@@ -15,14 +15,17 @@ package au.edu.unsw.cse.soc.federatedcloud.orchestrator;
  * limitations under the License.
  */
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import au.edu.unsw.cse.soc.federatedcloud.orchestrator.OrchestrationEngineHolder;
 
 /**
  * User: denis
- * A dummy event generator
+ * Handles time based events
  */
-public class SampleEventGenerator {
-    private static final Logger log = LoggerFactory.getLogger(SampleEventGenerator.class);
+public class TemporalEventHandler implements EventHandler<TemporalEvent> {
+    @Override
+    public void handle(final TemporalEvent event) {
+        //... handle
+        System.out.println("Temporal Event Handled");
+        OrchestrationEngineHolder.getInstance().getOrchestratorEngine().onEvent(event);
+    }
 }
-

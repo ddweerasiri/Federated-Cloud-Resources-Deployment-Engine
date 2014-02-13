@@ -15,8 +15,14 @@ package au.edu.unsw.cse.soc.federatedcloud.orchestrator;
  * limitations under the License.
  */
 
+import au.edu.unsw.cse.soc.federatedcloud.orchestrator.datamodel.workflow.ComponentState;
+import au.edu.unsw.cse.soc.federatedcloud.orchestrator.datamodel.workflow.OrchestratorWorkflow;
+import au.edu.unsw.cse.soc.federatedcloud.orchestrator.datamodel.workflow.Transition;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * User: denis
@@ -24,4 +30,48 @@ import org.slf4j.LoggerFactory;
  */
 public class ExecutionContext {
     private static final Logger log = LoggerFactory.getLogger(ExecutionContext.class);
+    List<OrchestratorWorkflow> workflows;
+    ComponentState activeState;
+
+    public ExecutionContext() {
+        workflows = new ArrayList<OrchestratorWorkflow>();
+    }
+
+    public List<OrchestratorWorkflow> getWorkflows() {
+        return workflows;
+    }
+
+    public void setWorkflows(List<OrchestratorWorkflow> workflows) {
+        this.workflows = workflows;
+    }
+
+    public ComponentState getActiveState() {
+        return activeState;
+    }
+
+    public void setActiveState(ComponentState activeState) {
+        if (this.activeState == null) {
+            log.info("Initial Active state is set to :" + activeState.getId());
+        } else {
+            log.info("Active state changed from: " + this.activeState.getId() + " to " + activeState.getId());
+        }
+        this.activeState = activeState;
+    }
+
+    public void addWorkflow(OrchestratorWorkflow workflow) {
+        workflows.add(workflow);
+    }
+
+    public List<Transition> getFireableTransitions() {
+        List<Transition> fireableTransitions = new ArrayList<Transition>();
+        //search transitions, which has the sourceState equals to ActiveState
+        OrchestratorWorkflow currentWorkflow = workflows.get(0);
+        for (Transition t : currentWorkflow.getTransitions()) {
+            if (t.getSourceStateID().equals(activeState.getId())) {
+                fireableTransitions.add(t);
+            }
+        }
+        //returns the list
+        return fireableTransitions;
+    }
 }
