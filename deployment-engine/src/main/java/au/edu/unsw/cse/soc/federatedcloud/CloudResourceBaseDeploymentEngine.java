@@ -16,15 +16,17 @@ package au.edu.unsw.cse.soc.federatedcloud;
  */
 
 
-import au.edu.unsw.cse.soc.federatedcloud.datamodel.CloudResourceDescription;
-import au.edu.unsw.cse.soc.federatedcloud.datamodel.Deployer;
-import au.edu.unsw.cse.soc.federatedcloud.deployers.CloudResourceDeployer;
-import au.edu.unsw.cse.soc.federatedcloud.deployers.DeployerFactory;
+import au.edu.unsw.cse.soc.federatedcloud.datamodel.resource.CloudResourceDescription;
+import au.edu.unsw.cse.soc.federatedcloud.datamodel.resource.Handler;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
@@ -33,13 +35,14 @@ import java.net.URLDecoder;
  * User: denis
  * Interpret a workflow xml and execute actions
  */
-@Path("/engine")
+@Path("/deploymentengine")
 public class CloudResourceBaseDeploymentEngine {
     private static final Logger log = LoggerFactory.getLogger(CloudResourceBaseDeploymentEngine.class);
     @Path("/deploy")
     @POST
-    @Produces(MediaType.TEXT_PLAIN)
-    public String deployCloudResourceDescription(@QueryParam("description_id")  String description_id, @QueryParam("description_json") @DefaultValue("{}")  String description) {
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response deployCloudResourceDescription(@QueryParam("description_id") String description_id, @QueryParam("description_json") @DefaultValue("{}") String description) {
         log.info("Deployment Request Received for id: " + description_id);
         try {
             log.info("Input Resource description: " + URLDecoder.decode(description, "UTF-8"));
@@ -48,25 +51,24 @@ public class CloudResourceBaseDeploymentEngine {
         }
 
         try {
-            CloudResourceDescription desc = DataModelUtil.buildCouldResourceDescriptionFromJSON(Integer.parseInt(description_id));
+            CloudResourceDescription desc = DataModelUtil.buildCouldResourceDescriptionFromJSON(description_id);
             CloudResourceBaseDeploymentEngine engine = new CloudResourceBaseDeploymentEngine();
-            engine.deployCloudResourceDescription(desc);
+            String response = engine.deployCloudResourceDescription(desc);
             log.info("Deployed Resource:" + desc.toString());
+
+            JsonObject json = new JsonObject();
+            json.addProperty("result", response);
+            return Response.status(Response.Status.OK).entity(json.toString()).build();
         } catch (Exception e) {
             log.error(e.getMessage(), e);
+            return Response.status(Response.Status.OK).entity(e.getMessage()).build();
         }
-
-        return "Resource Deployed";
     }
 
     public static void main(String[] args) throws Exception {
         //File file = new File("cloud-resource-base/SENG1031.json");   // cloud resource to be deployed as the input
         //File file = new File("cloud-resource-base/computing-server.json");   // cloud resource to be deployed as the input
         //File file = new File("/Users/denis/Dropbox/Documents/UNSW/Projects/github/Federated-Cloud-Resources-Deployment-Engine/cloud-resource-base/cloud-resource-descriptions/key-value-storage-service.json");   // cloud resource to be deployed as the input
-
-        CloudResourceBaseDeploymentEngine engine = new CloudResourceBaseDeploymentEngine();
-        engine.deployCloudResourceDescription(1);
-
     }
 
     /**
@@ -84,23 +86,26 @@ public class CloudResourceBaseDeploymentEngine {
     /**
      * Deploy a cloud resources configuration for a given {@code CloudResourceDescription}
      *
+     *
      * @param description object of {@code CloudResourceDescription}
      * @throws Exception
      */
-    public void deployCloudResourceDescription(CloudResourceDescription description) throws Exception {
-        Deployer deployer = description.getDeployer();
+    public String deployCloudResourceDescription(CloudResourceDescription description) throws Exception {
+        Handler handler = description.getHandler();
 
-        CloudResourceDeployer cloudResourceDeployer = DeployerFactory.build(deployer.getName());
-        cloudResourceDeployer.deploy(description);
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String json = gson.toJson(description);
+
+        return ServiceBusClient.invoke(handler.getName(), "deploy", json);
     }
 
     /**
      * Deploy a cloud resource for a given id
      *
-     * @param componentID ID of a cloud resource description
+     * @param resourceID ID of a cloud resource description
      */
-    public void deployCloudResourceDescription(int componentID) throws Exception {
-        CloudResourceDescription description = DataModelUtil.buildCouldResourceDescriptionFromJSON(componentID);
+    public void deployCloudResourceDescription(String resourceID) throws Exception {
+        CloudResourceDescription description = DataModelUtil.buildCouldResourceDescriptionFromJSON(resourceID);
 
         deployCloudResourceDescription(description);
     }
