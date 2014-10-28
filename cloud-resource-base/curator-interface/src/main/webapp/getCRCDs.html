@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>User Interface</title>
+
+    <link rel="stylesheet" href="css/bootstrap.css" type="text/css"/>
+
+
+</head>
+<body>
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="js/getCRCDs.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <div class="container">
+        <h1><a href="#">Cloud-Base - CRCD browser</a></h1>
+
+        <div class="span3">
+            <label>Search by Category</label>
+            <select multiple="false" class="span3">
+                <option value="volvo">IaaS</option>
+                <option value="saab">PaaS</option>
+                <option value="opel">SaaS</option>
+                <option value="opel">Other</option>
+            </select>
+            <label>Search by Name</label>
+            <input type="text" class="span3" placeholder="Resource Name">
+            <label>Recommended Resources</label>
+            <textarea name="ResultantList" id="ResultantListTextArea"></textarea>
+        </div>
+        <div class="span3">
+            <a id="searchButton" class="btn btn-small btn-success">Get</a>
+        </div>
+
+    </div>
+</body>
+</html>

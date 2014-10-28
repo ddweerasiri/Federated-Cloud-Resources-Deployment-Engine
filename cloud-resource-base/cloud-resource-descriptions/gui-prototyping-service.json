@@ -1,11 +1,14 @@
 {
     "attributes": {
-        "id": 4,
-        "name": "GUI Prototyping Service"
+        "id": "4",
+        "name": "GUI Prototyping Service",
+        "tags": "SaaS"
     },
-    "deployers": [
+    "handlers": [
         {
-            "name": "au.edu.unsw.cse.soc.federatedcloud.deployers.LucidChartDeployer"
+            "attributes": {
+                "name": "au.edu.unsw.cse.soc.federatedcloud.deployers.LucidChartDeployer"
+            }
         }
     ]
 }

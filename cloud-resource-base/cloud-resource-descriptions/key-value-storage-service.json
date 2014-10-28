@@ -1,12 +1,16 @@
 {
     "attributes": {
-        "id": 1,
-        "name": "ddweerasiri-bucket-1",
-        "initial_capacity": "5GB"
+        "id": "asdyqwed",
+        "name": "aws-s3",
+        "bucket-name": "ddweerasiri-bucket-1",
+        "initial_capacity": "5GB",
+        "tags": "IaaS"
     },
-    "deployers": [
+    "handlers": [
         {
-            "name": "au.edu.unsw.cse.soc.federatedcloud.deployers.aws.AWSS3Deployer"
+            "attributes": {
+                "name": "AWSS3DeploymentService"
+            }
         }
     ]
 }

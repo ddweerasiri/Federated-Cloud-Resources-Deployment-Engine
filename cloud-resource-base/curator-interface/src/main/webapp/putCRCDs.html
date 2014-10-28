@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Curator's Interface</title>
+
+    <link rel="stylesheet" href="css/bootstrap.css" type="text/css"/>
+</head>
+<body>
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script src="js/putCRCDs.js"></script>
+<script src="js/bootstrap.js"></script>
+<div class="container">
+    <h1><a href="#">Cloud-Base - Curator's Interface</a></h1>
+
+    <div class="span3">
+        <label>Resource Name</label>
+        <input type="text" class="span3" placeholder="Resource Name" id="resourceNameText">
+        <label>Attributes (as an map) eg: {"colour": "helk", "age":"young"}</label>
+        <textarea name="AttributeList" id="AttributeArrayTextArea"></textarea>
+        <label>Component Resources</label>
+        <a id="composeDeploymentButton" class="btn btn-small btn-success">Compose Deployment Plan</a>
+        <label>Handlers</label>
+        <a id="searchServiceBaseButton" class="btn btn-small btn-success">Search Handlers in ServiceBase</a>
+        <label>Task Category</label>
+        <select multiple="true" class="span3" id="taskCategoryList">
+            <option value="volvo">IaaS</option>
+            <option value="saab">PaaS</option>
+            <option value="opel">SaaS</option>
+        </select>
+        <a id="putButton" class="btn btn-small btn-success">Put</a>
+    </div>
+</div>
+</body>
+</html>

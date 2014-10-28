@@ -1,11 +1,14 @@
 {
     "attributes": {
-        "id": 5,
-        "name": "Office Suite"
+        "id": "5",
+        "name": "Office Suite",
+        "tags": "SaaS"
     },
-    "deployers": [
+    "handlers": [
         {
-            "name": "au.edu.unsw.cse.soc.federatedcloud.deployers.GoogleDriveDeployer"
+            "attributes": {
+                "name": "au.edu.unsw.cse.soc.federatedcloud.deployers.GoogleDriveDeployer"
+            }
         }
     ]
 }

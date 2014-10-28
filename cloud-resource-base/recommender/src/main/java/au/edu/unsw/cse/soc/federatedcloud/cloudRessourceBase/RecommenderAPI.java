@@ -16,7 +16,6 @@ package au.edu.unsw.cse.soc.federatedcloud.cloudRessourceBase;
  */
 
 import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,13 +31,38 @@ import javax.ws.rs.core.Response;
  * The recommender API
  */
 @Path("/recommender")
-public class Recommender {
-    private static final Logger log = LoggerFactory.getLogger(Recommender.class);
+public class RecommenderAPI {
+    private static final Logger log = LoggerFactory.getLogger(RecommenderAPI.class);
 
     @Path("/getAll")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllRecommendations() {
+        JsonObject json = returnDummyObject();
+
+        return Response.status(Response.Status.OK).entity(json.toString()).build();
+
+    }
+
+    @Path("/getByName")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getRecommendationsByName(String name) {
+        JsonObject json = returnDummyObject();
+
+        return Response.status(Response.Status.OK).entity(json.toString()).build();
+    }
+
+    @Path("/getByTaskCategory")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getRecommendationsByTaskCategory(String taskCategory) {
+        JsonObject json = returnDummyObject();
+
+        return Response.status(Response.Status.OK).entity(json.toString()).build();
+    }
+
+    private JsonObject returnDummyObject() {
         JsonObject json = new JsonObject();
         JsonArray descriptionsJsonArray = new JsonArray();
 
@@ -65,7 +89,7 @@ public class Recommender {
 
         json.add("CloudResourceDescriptions", descriptionsJsonArray);
 
-        return Response.status(Response.Status.OK).entity(json.toString()).build();
-
+        return json;
     }
+
 }

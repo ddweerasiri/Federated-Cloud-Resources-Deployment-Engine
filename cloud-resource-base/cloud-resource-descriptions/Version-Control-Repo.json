@@ -1,0 +1,14 @@
+{
+  "attributes": {
+    "id": "3z880zcD",
+    "repo-name": "testRepo",
+    "name": "Version-Control-Repo"
+  },
+  "handlers": [
+      {
+          "attributes": {
+              "name": "GitHubRepoDeploymentService"
+          }
+      }
+  ]
+}

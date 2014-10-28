@@ -1,11 +1,11 @@
 {
     "id": 9,
     "condition": {
-        "task_category": ["GUI Prototyping Service"]
+        "taskCategories": ["GUI Prototyping Service"]
     },
     "conclusion": {
-        "cloud_resource_description_ids": [4]
+        "cloudResourceDescriptionId": "4"
     },
-    "except_node_id": null,
-    "false_node_id": null
+    "exceptNodeId": null,
+    "falseNodeId": 10
 }

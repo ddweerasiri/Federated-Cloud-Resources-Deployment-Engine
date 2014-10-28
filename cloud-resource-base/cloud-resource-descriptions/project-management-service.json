@@ -1,12 +1,20 @@
 {
     "attributes": {
-        "id": 3,
+        "id": "3",
         "name": "Project Management Service",
-        "allocated_number_of_users": 55
+        "allocated_number_of_users": 55,
+        "tags": "SaaS"
     },
-    "deployers": [
+    "handlers": [
         {
-            "name": "au.edu.unsw.cse.soc.federatedcloud.deployers.PivotalTrackerDeployer"
+            "attributes": {
+                "name": "au.edu.unsw.cse.soc.federatedcloud.deployers.PivotalTrackerDeployer"
+            }
+        },
+        {
+            "attributes": {
+                "name": "RedmineOnEC2Deployer"
+            }
         }
     ]
 }

@@ -1,11 +1,11 @@
 {
     "id": 6,
     "condition": {
-        "task_category": ["Software Development Platform"]
+        "taskCategories": ["Software Development Platform"]
     },
     "conclusion": {
-        "cloud_resource_description_ids": [6]
-    },
-    "except_node_id": null,
-    "false_node_id": 7
+        "cloudResourceDescriptionId": "6"
+    },                task_category
+    "exceptNodeId": null,
+    "falseNodeId": 7
 }

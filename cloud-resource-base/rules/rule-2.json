@@ -1,11 +1,11 @@
 {
     "id": 2,
     "condition": {
-        "task_category": ["Storage Management", "Key-Value Storage as a Service"]
+        "taskCategories": ["Storage Management", "Key-Value Storage as a Service"]
     },
     "conclusion": {
-        "cloud_resource_description_ids": [1]
+        "cloudResourceDescriptionId": "1"
     },
-    "except_node_id": null,
-    "false_node_id": null
+    "exceptNodeId": null,
+    "falseNodeId": null
 }

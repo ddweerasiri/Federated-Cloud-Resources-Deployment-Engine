@@ -1,11 +1,11 @@
 {
-    "id": 5,
+    "id": 10,
     "condition": {
-        "taskCategories": ["Courses", "COMP9323"]
+        "taskCategories": ["Courses"]
     },
     "conclusion": {
         "cloudResourceDescriptionId": "7"
     },
     "exceptNodeId": null,
-    "falseNodeId": 4
+    "falseNodeId": null
 }

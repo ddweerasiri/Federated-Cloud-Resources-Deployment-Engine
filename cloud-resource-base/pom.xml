@@ -17,6 +17,7 @@
         <module>cloud-resource-descriptions</module>
         <module>java-client</module>
         <module>recommender</module>
+        <module>curator-interface</module>
     </modules>
 
 

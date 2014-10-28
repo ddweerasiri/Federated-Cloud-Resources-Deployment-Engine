@@ -1,13 +1,21 @@
 {
     "attributes": {
-        "id": 8,
+        "id": "8",
         "name": "Computing-Service",
         "operating-system": "ubuntu-12.04",
-        "memory": 1024
+        "memory": 1024,
+        "tags": "IaaS"
     },
-    "deployers": [
+    "handlers": [
         {
-            "name": "au.edu.unsw.cse.soc.federatedcloud.deployers.rackspace.RackspaceDeployer"
+            "attributes": {
+                "name": "au.edu.unsw.cse.soc.federatedcloud.deployers.rackspace.RackspaceDeployer"
+            }
+        },
+        {
+            "attributes": {
+                "name": "au.edu.unsw.cse.soc.federatedcloud.deployers.HPCloudComputeManager"
+            }
         }
     ]
 }
