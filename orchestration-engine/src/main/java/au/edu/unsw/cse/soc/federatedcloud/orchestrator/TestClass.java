@@ -18,9 +18,14 @@ package au.edu.unsw.cse.soc.federatedcloud.orchestrator;
 import au.edu.unsw.cse.soc.federatedcloud.orchestrator.datamodel.workflow.OrchestratorWorkflow;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import sun.misc.BASE64Encoder;
 
+import javax.crypto.Mac;
+import javax.crypto.spec.SecretKeySpec;
 import java.io.File;
 import java.io.IOException;
+import java.security.SignatureException;
+import java.util.Properties;
 
 /**
  * User: denis
@@ -29,7 +34,8 @@ import java.io.IOException;
 public class TestClass {
     private static final Logger log = LoggerFactory.getLogger(TestClass.class);
 
-    public static void main(String[] args) throws IOException {
+
+    /*public static void main(String[] args) throws IOException {
         OrchestratorEngine engine = OrchestrationEngineHolder.getInstance().getOrchestratorEngine();
         engine.startOrchestrationEngine();
 
@@ -37,5 +43,67 @@ public class TestClass {
         engine.deployOrchestratorWorkflow(workflow);
 
         engine.startEventGenerator();
+    }*/
+
+    public static void main(String[] args) throws Exception {
+        TestClass clazz = new TestClass();
+        System.out.println(clazz.putBucket("Tue, 25 Feb 2014 07:20:23 +0000"));
+    }
+
+    public String putBucket(String date) throws Exception {
+        //Reading the credentials
+        String AWS_ACCESS_KEY = "";
+        String AWS_SECRET_KEY = "";
+
+        String toSign = "";
+        /*
+        toSign = "PUT" + "\n" +
+                ContentMD5 + "\n" +
+                ContentType + "\n" +
+                date + "\n" +
+                CanonicalizedAmzHeaders +
+                CanonicalizedResource;
+*/
+
+        String signed = calculateRFC2104HMAC(toSign, AWS_SECRET_KEY);
+
+        return "AWS " + AWS_ACCESS_KEY + ":" + signed;
+    }
+
+    /**
+     * Computes RFC 2104-compliant HMAC signature.
+     * * @param data
+     * The data to be signed.
+     *
+     * @param key The signing key.
+     * @return The Base64-encoded RFC 2104-compliant HMAC signature.
+     * @throws java.security.SignatureException
+     *          when signature generation fails
+     */
+    public String calculateRFC2104HMAC(String data, String key)
+            throws java.security.SignatureException {
+        String HMAC_SHA1_ALGORITHM = "HmacSHA1";
+        String result;
+        try {
+
+            // get an hmac_sha1 key from the raw key bytes
+            SecretKeySpec signingKey = new SecretKeySpec(key.getBytes(), HMAC_SHA1_ALGORITHM);
+
+            // get an hmac_sha1 Mac instance and initialize with the signing key
+            Mac mac = Mac.getInstance(HMAC_SHA1_ALGORITHM);
+            mac.init(signingKey);
+
+            // compute the hmac on input data bytes
+            byte[] rawHmac = mac.doFinal(data.getBytes());
+
+            // base64-encode the hmac
+            BASE64Encoder encoder = new BASE64Encoder();
+            result = encoder.encode(rawHmac);
+
+        } catch (Exception e) {
+            throw new SignatureException("Failed to generate HMAC : " + e.getMessage());
+        }
+        return result;
     }
 }
+
