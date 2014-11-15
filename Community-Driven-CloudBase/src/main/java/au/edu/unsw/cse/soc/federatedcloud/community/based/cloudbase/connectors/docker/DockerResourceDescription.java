@@ -1,4 +1,4 @@
-package au.edu.unsw.cse.soc.federatedcloud.datamodel;
+package au.edu.unsw.cse.soc.federatedcloud.community.based.cloudbase.connectors.docker;
 /*
  * Copyright (c) 2014, Denis Weerasiri All Rights Reserved.
  *
@@ -20,14 +20,8 @@ import org.slf4j.LoggerFactory;
 
 /**
  * User: denis
- * Represent the composition of a set of cloud resources (aka Composite resource)
+ * TODO: Include the class description here
  */
-public class CloudResourcesComposition {
-    private static final Logger logger = LoggerFactory.getLogger(CloudResourcesComposition.class);
-
-    public ControlFlow getControlFlow() {
-        return controlFlow;
-    }
-
-    ControlFlow controlFlow;
+public class DockerResourceDescription {
+    private static final Logger log = LoggerFactory.getLogger(DockerResourceDescription.class);
 }

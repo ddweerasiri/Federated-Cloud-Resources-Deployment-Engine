@@ -15,6 +15,8 @@ package au.edu.unsw.cse.soc.federatedcloud.community.based.cloudbase.connectors;
  * limitations under the License.
  */
 
+import org.json.simple.JSONObject;
+
 /**
  * User: denis
  * Represent the Connector interface that should be implemented by all connector developers
@@ -24,7 +26,7 @@ public interface Connector {
      * Generate a native resource description and generate a unique id for it.
      * @return resourceID
      */
-    public int init();
+    public int init(JSONObject resourceDescription);
 
     public Result deploy(int resourceID);
 }

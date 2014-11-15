@@ -1,0 +1,6 @@
+{
+    "$schema-location": "Image-Schema.json",
+    "name": "tomcat-image",
+    "version": "7",
+    "script": "sudo apt-get install apache-tomcat-7"
+}

@@ -1,0 +1,17 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "name": "Virtual-Machine-Schema",
+    "version": "1.0.0",
+    "author": "denis",
+    "description": "represent a virtual machine",
+    "associated-tool": "Docker-Rest-API",
+    "attributes": [
+        {
+            "name": "FQDN-of-VM",
+            "type": "string",
+            "default-value": "127.0.0.1",
+            "required": "yes",
+            "description": "FQDN of the VM where the resource to be deployed"
+        }
+    ]
+}

@@ -17,6 +17,7 @@ package au.edu.unsw.cse.soc.federatedcloud.community.based.cloudbase.connectors.
 
 import au.edu.unsw.cse.soc.federatedcloud.community.based.cloudbase.connectors.Connector;
 import au.edu.unsw.cse.soc.federatedcloud.community.based.cloudbase.connectors.Result;
+import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,7 +29,7 @@ public class JujuConnector implements Connector {
     private static final Logger log = LoggerFactory.getLogger(JujuConnector.class);
 
     @Override
-    public int init() {
+    public int init(JSONObject resourceDescription) {
         return 0;
     }
 

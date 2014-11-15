@@ -1,0 +1,27 @@
+{
+    "name": "Deployment-Schema",
+    "author": "denis weerasiri",
+    "version": "1.0.0",
+    "description": "represents the deployment of a Docker Container in a Virtual Machine",
+    "associated-tool": "Docker-CLI",
+    "participating-entities": [
+        {
+            "name": "Container",
+            "version": "1.0.0",
+            "role": "deployed by",
+            "cardinality": {
+                "min-value": "1",
+                "max-value": "1"
+            }
+        },
+        {
+            "name": "Virtual-Machine-Schema",
+            "version": "1.0.0",
+            "role": "deploy",
+            "cardinality": {
+                "min-value": "0",
+                "max-value": "INF"
+            }
+        }
+    ]
+}

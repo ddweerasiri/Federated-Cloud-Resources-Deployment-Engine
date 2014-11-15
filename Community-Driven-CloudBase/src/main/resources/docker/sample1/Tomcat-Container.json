@@ -1,0 +1,6 @@
+{
+    "$schema-location": "Container-Schema.json",
+    "name": "tomcat-container",
+    "state": "run",
+    "port-binding-rules": "8080:80"
+}
