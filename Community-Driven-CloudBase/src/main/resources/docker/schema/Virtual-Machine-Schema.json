@@ -5,7 +5,14 @@
     "author": "denis",
     "description": "represent a virtual machine",
     "associated-tool": "Docker-Rest-API",
-    "attributes": [
+    "properties": [
+        {
+            "name": "id",
+            "type": "string",
+            "default-value": "",
+            "required": "yes",
+            "description": "id of the VM"
+        },
         {
             "name": "FQDN-of-VM",
             "type": "string",

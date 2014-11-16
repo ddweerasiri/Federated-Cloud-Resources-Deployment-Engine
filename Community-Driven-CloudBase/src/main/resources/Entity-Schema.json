@@ -24,7 +24,7 @@
             "description": "name of the associated tool (eg- Docker-Rest-API)",
             "type": "string"
         },
-        "attributes": {
+        "properties": {
             "type": "array",
             "items": {
                 "type": "object",

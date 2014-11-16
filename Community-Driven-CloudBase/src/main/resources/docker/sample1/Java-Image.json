@@ -1,0 +1,7 @@
+{
+    "$schema-location": "Image-Schema.json",
+    "id": "tifayuki/java",
+    "name": "java-image",
+    "author": "denis",
+    "version": "1.7"
+}

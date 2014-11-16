@@ -1,0 +1,17 @@
+{
+  "$schema-location": "Deployment-Schema.json",
+  "id": "depl-1",
+  "name": "name",
+  "author": "denis",
+  "version": "1",
+  "participating-entities": [
+    {
+      "id": "tomcat-container",
+      "role": "deployed by"
+    },
+    {
+      "id": "vm-1",
+      "role": "deploy"
+    }
+  ]
+}

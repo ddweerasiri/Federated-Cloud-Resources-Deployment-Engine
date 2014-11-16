@@ -58,7 +58,7 @@
                 "maxItems": 2
             }
         },
-        "attributes": {
+        "properties": {
             "type": "array",
             "items": {
                 "type": "object",

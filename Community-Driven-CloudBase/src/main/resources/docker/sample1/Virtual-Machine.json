@@ -1,0 +1,5 @@
+{
+  "$schema-location": "Vistual-Machine-Schema.json",
+  "id": "vm-1",
+  "FQDN-of-VM": "127.0.0.1"
+}

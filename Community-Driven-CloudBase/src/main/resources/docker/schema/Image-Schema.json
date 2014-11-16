@@ -5,20 +5,34 @@
     "author": "denis",
     "description": "represent a Docker Image",
     "associated-tool": "Docker-Rest-API",
-    "attributes": [
+    "properties": [
+        {
+            "name": "id",
+            "type": "string",
+            "default-value": "",
+            "required": "yes",
+            "description": "id of the Docker Image"
+        },
         {
             "name": "name",
             "type": "string",
             "default-value": "",
             "required": "yes",
-            "description": "URL of the Docker Registry"
+            "description": "name of the Docker Image"
+        },
+        {
+            "name": "author",
+            "type": "string",
+            "default-value": "",
+            "required": "yes",
+            "description": "author of the Docker Image"
         },
         {
             "name": "version",
             "type": "integer",
             "default-value": "",
             "required": "no",
-            "description": "Port of the Docker Registry"
+            "description": "Version of the Docker Image"
         },
         {
             "name": "script",

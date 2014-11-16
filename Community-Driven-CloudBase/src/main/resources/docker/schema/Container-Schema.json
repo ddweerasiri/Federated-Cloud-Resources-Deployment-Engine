@@ -4,7 +4,14 @@
     "version": "1.0.0",
     "description": "represents a Docker Container",
     "associated-tool": "Docker-CLI",
-    "attributes": [
+    "properties": [
+        {
+            "name": "id",
+            "type": "string",
+            "default-value": "",
+            "required": true,
+            "description": "id of the Container"
+        },
         {
             "name": "name",
             "type": "string",

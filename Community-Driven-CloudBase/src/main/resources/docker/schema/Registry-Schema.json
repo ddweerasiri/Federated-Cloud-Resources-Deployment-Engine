@@ -5,7 +5,14 @@
     "author": "denis",
     "description": "represent a Docker Registry",
     "associated-tool": "Docker-Rest-API",
-    "attributes": [
+    "properties": [
+        {
+            "name": "id",
+            "type": "string",
+            "default-value": "",
+            "required": "yes",
+            "description": "id of the Docker Registry"
+        },
         {
             "name": "url",
             "type": "string",
