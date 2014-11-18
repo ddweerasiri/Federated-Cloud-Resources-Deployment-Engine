@@ -14,11 +14,18 @@
             "description": "id of the VM"
         },
         {
-            "name": "FQDN-of-VM",
+            "name": "ip-of-VM",
             "type": "string",
             "default-value": "127.0.0.1",
             "required": "yes",
-            "description": "FQDN of the VM where the resource to be deployed"
+            "description": "ip of the VM where the resource to be deployed"
+        },
+        {
+            "name": "port-of-VM",
+            "type": "string",
+            "default-value": "4243",
+            "required": "yes",
+            "description": "port of the VM where the resource to be deployed"
         }
     ]
 }
