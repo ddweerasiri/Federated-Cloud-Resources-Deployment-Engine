@@ -15,10 +15,62 @@ package au.edu.unsw.cse.soc.federatedcloud.deployers.aws.ec2;
  * limitations under the License.
  */
 
+import au.edu.unsw.cse.soc.federatedcloud.datamodel.resource.CloudResourceDescription;
+import au.edu.unsw.cse.soc.federatedcloud.deployers.CloudResourceDeployer;
+import com.amazonaws.auth.AWSCredentials;
+import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.services.ec2.AmazonEC2Client;
+import com.amazonaws.services.ec2.model.CreateImageRequest;
+import com.amazonaws.services.ec2.model.CreateImageResult;
+import com.amazonaws.services.ec2.model.TerminateInstancesRequest;
+import com.amazonaws.services.ec2.model.TerminateInstancesResult;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Properties;
+
 /**
  * User: denis
  * TODO: Include the class description here
  */
-public class AWSEC2VMDeploymentWrapper {
+public class AWSEC2VMDeploymentWrapper implements CloudResourceDeployer {
     private static final Logger log = LoggerFactory.getLogger(AWSEC2VMDeploymentWrapper.class);
+
+    @Override
+    public void deployResource(CloudResourceDescription description) throws Exception {
+        //Reading the credentials
+        Properties properties = new Properties();
+        properties.load(this.getClass().getResourceAsStream("/AwsCredentials.properties"));
+        String accessKey = properties.getProperty("accessKey");
+        String secretKey = properties.getProperty("secretKey-NULL");
+        AWSCredentials credentials = new BasicAWSCredentials(accessKey, secretKey);
+        AmazonEC2Client cleint = new AmazonEC2Client(credentials);
+
+        CreateImageRequest request = new CreateImageRequest();
+        request.setInstanceId("");
+        request.setName("");
+        CreateImageResult result = cleint.createImage(request);
+
+        /*will be returned*/ result.getImageId();
+    }
+
+    @Override
+    public void undeployResource(String resourceID) throws Exception {
+        //Reading the credentials
+        Properties properties = new Properties();
+        properties.load(this.getClass().getResourceAsStream("/AwsCredentials.properties"));
+        String accessKey = properties.getProperty("accessKey");
+        String secretKey = properties.getProperty("secretKey-NULL");
+        AWSCredentials credentials = new BasicAWSCredentials(accessKey, secretKey);
+        AmazonEC2Client cleint = new AmazonEC2Client(credentials);
+
+        TerminateInstancesRequest request = new TerminateInstancesRequest();
+        List<String> idList = new ArrayList<String>();
+        idList.add(resourceID);
+        request.setInstanceIds(idList);
+        TerminateInstancesResult result = cleint.terminateInstances(request);
+
+    }
 }
