@@ -1,5 +1,0 @@
-{
-  "$schema-location": "Service-Schema.json",
-  "id": "service-1",
-  "exposed": false
-}

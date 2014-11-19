@@ -1,8 +1,0 @@
-{
-    "$schema-location": "Image-Schema.json",
-    "id": "denis/tomcat",
-    "name": "tomcat-image",
-    "author": "denis",
-    "version": "7",
-    "script": "sudo apt-get install apache-tomcat-7"
-}
