@@ -10,11 +10,13 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>deployment-engine</module>
-        <module>deployers</module>
+        <module>handlers</module>
         <module>bpmn-workflows</module>
         <module>cloud-resource-base</module>
         <module>data-model</module>
         <module>orchestration-engine</module>
+        <module>user-interface</module>
+        <module>community-based-cloudbase</module>
     </modules>
 
     <properties>

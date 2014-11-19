@@ -1,4 +1,5 @@
-package au.edu.unsw.cse.soc.federatedcloud.community.based.cloudbase.connectors.docker;
+package au.edu.unsw.cse.soc.federatedcloud.user;
+
 /*
  * Copyright (c) 2014, Denis Weerasiri All Rights Reserved.
  *
@@ -14,16 +15,8 @@ package au.edu.unsw.cse.soc.federatedcloud.community.based.cloudbase.connectors.
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-import org.json.simple.JSONObject;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-/**
- * User: denis
- * Represent  a docker resource model
- */
-public class DockerResourceDescription extends JSONObject {
-    private static final Logger log = LoggerFactory.getLogger(DockerResourceDescription.class);
-
+public class Constants {
+    public static final String FILE_NAME = "app.json";
+    public static final String NAME_OF_ID_ATTRIBUTE = "id";
+    public static final String TEMPLATE_FILE_NAME = "app-template.json";
 }

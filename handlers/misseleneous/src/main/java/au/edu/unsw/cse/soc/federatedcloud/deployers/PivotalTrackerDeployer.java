@@ -1,4 +1,4 @@
-package au.edu.unsw.cse.soc.federatedcloud.community.based.cloudbase.connectors.docker;
+package au.edu.unsw.cse.soc.federatedcloud.deployers;
 /*
  * Copyright (c) 2014, Denis Weerasiri All Rights Reserved.
  *
@@ -15,15 +15,19 @@ package au.edu.unsw.cse.soc.federatedcloud.community.based.cloudbase.connectors.
  * limitations under the License.
  */
 
-import org.json.simple.JSONObject;
+import au.edu.unsw.cse.soc.federatedcloud.datamodel.resource.CloudResourceDescription;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
  * User: denis
- * Represent  a docker resource model
+ * PivotalTracker Handler
  */
-public class DockerResourceDescription extends JSONObject {
-    private static final Logger log = LoggerFactory.getLogger(DockerResourceDescription.class);
+public class PivotalTrackerDeployer implements CloudResourceDeployer {
+    private static final Logger log = LoggerFactory.getLogger(PivotalTrackerDeployer.class);
 
+    public void deploy(CloudResourceDescription description) throws Exception {
+        String descriptionID = description.getAttributes().get("id");
+        log.info("Deployment request received for description:" + descriptionID);
+    }
 }

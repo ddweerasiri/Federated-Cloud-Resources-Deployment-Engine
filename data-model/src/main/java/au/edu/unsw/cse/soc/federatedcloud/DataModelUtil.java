@@ -15,7 +15,7 @@ package au.edu.unsw.cse.soc.federatedcloud;
  * limitations under the License.
  */
 
-import au.edu.unsw.cse.soc.federatedcloud.datamodel.CloudResourceDescription;
+import au.edu.unsw.cse.soc.federatedcloud.datamodel.resource.CloudResourceDescription;
 import com.google.gson.Gson;
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
@@ -37,8 +37,12 @@ public class DataModelUtil {
      * @param aFile input file to be processed (must be a JSON file)
      */
     private static CloudResourceDescription processFile(File aFile) throws Exception {
-        String fileContent = FileUtils.readFileToString(aFile);
-        return readJSON(fileContent);
+        try {
+            String fileContent = FileUtils.readFileToString(aFile);
+            return readJSON(fileContent);
+        } catch (Exception e) {
+            throw new Exception("Error occured when processing:" + aFile.getAbsolutePath(), e);
+        }
     }
 
     /**
@@ -48,7 +52,7 @@ public class DataModelUtil {
      * @return an object of {@code CloudResourceDescription}
      * @throws Exception
      */
-    public static CloudResourceDescription buildCouldResourceDescriptionFromJSON(int cloudResourceID) throws Exception {
+    public static CloudResourceDescription buildCouldResourceDescriptionFromJSON(String cloudResourceID) throws Exception {
         return searchFolder("/Users/denis/Dropbox/Documents/UNSW/Projects/github/Federated-Cloud-Resources-Deployment-Engine/" +
                 "cloud-resource-base/cloud-resource-descriptions", Pattern.compile("(?i).*\\.json$"), cloudResourceID);
     }
@@ -59,7 +63,7 @@ public class DataModelUtil {
      * @param searchPath  file location to be searched
      * @param filePattern search criteria
      */
-    private static CloudResourceDescription searchFolder(String searchPath, Pattern filePattern, int cloudResourceDescriptionID) throws Exception {
+    private static CloudResourceDescription searchFolder(String searchPath, Pattern filePattern, String cloudResourceDescriptionID) throws Exception {
         File dir = new File(searchPath);
         System.out.println(dir.getAbsolutePath());
         for (File item : dir.listFiles()) {

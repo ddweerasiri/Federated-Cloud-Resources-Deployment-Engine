@@ -15,15 +15,23 @@ package au.edu.unsw.cse.soc.federatedcloud.community.based.cloudbase.connectors.
  * limitations under the License.
  */
 
-import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
  * User: denis
- * Represent  a docker resource model
+ * TODO: Include the class description here
  */
-public class DockerResourceDescription extends JSONObject {
-    private static final Logger log = LoggerFactory.getLogger(DockerResourceDescription.class);
+public class DockerContainerDescription {
+    private static final Logger log = LoggerFactory.getLogger(DockerContainerDescription.class);
+    private DockerImageDescription image;
+    private String name;
 
+    public DockerImageDescription getImage() {
+        return image;
+    }
+
+    public String getName() {
+        return name;
+    }
 }

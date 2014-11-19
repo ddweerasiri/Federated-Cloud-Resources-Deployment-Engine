@@ -1,4 +1,4 @@
-package au.edu.unsw.cse.soc.federatedcloud.community.based.cloudbase.connectors.docker;
+package au.edu.unsw.cse.soc.federatedcloud.datamodel.rule;
 /*
  * Copyright (c) 2014, Denis Weerasiri All Rights Reserved.
  *
@@ -15,15 +15,20 @@ package au.edu.unsw.cse.soc.federatedcloud.community.based.cloudbase.connectors.
  * limitations under the License.
  */
 
-import org.json.simple.JSONObject;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.List;
 
 /**
- * User: denis
- * Represent  a docker resource model
- */
-public class DockerResourceDescription extends JSONObject {
-    private static final Logger log = LoggerFactory.getLogger(DockerResourceDescription.class);
+* User: denis
+* TODO: Include the class description here
+*/
+public class Condition {
+    private List<String> getTaskCategories() {
+        return taskCategories;
+    }
 
+    private void setTaskCategories(List<String> taskCategories) {
+        this.taskCategories = taskCategories;
+    }
+
+    private List<String> taskCategories;
 }

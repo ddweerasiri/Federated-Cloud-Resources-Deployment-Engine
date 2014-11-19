@@ -1,0 +1,21 @@
+{
+    "name": "application-name",
+    "attributes" : [
+        {"attribute1": "value1"},
+        {"attribute2": "value2"}
+],
+
+    "resources": [
+        {
+            "name": "database"
+        },
+        {
+            "name": "web-server",
+            "attributes": [
+                {
+                    "type": "nodejs"
+                }
+            ]
+        }
+    ]
+}

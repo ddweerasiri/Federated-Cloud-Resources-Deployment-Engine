@@ -1,0 +1,17 @@
+{
+  "$schema-location": "Instantiation-Schema.json",
+  "id": "inst-1",
+  "name": "name",
+  "author": "denis",
+  "version": "1",
+  "participating-entities": [
+    {
+      "id": "tomcat-container",
+      "role": "instantiated by"
+    },
+    {
+      "id": "denis/tomcat",
+      "role": "instantiate"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+    "$schema-location": "Registry-Schema.json",
+    "id": "registry-1",
+    "url": "127.0.0.1",
+    "port": "5005"
+}
