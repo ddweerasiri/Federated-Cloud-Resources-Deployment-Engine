@@ -1,4 +1,4 @@
-package au.edu.unsw.cse.soc.federatedcloud.community.based.cloudbase.connectors;
+package au.edu.unsw.cse.soc.federatedcloud.community.driven.cloudbase.connectors.docker;
 /*
  * Copyright (c) 2014, Denis Weerasiri All Rights Reserved.
  *
@@ -15,18 +15,18 @@ package au.edu.unsw.cse.soc.federatedcloud.community.based.cloudbase.connectors;
  * limitations under the License.
  */
 
-import org.json.simple.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * User: denis
- * Represent the Connector interface that should be implemented by all connector developers
+ * TODO: Include the class description here
  */
-public interface Connector {
-    /**
-     * Generate a native resource description and generate a unique id for it.
-     * @return resourceID
-     */
-    public int init(JSONObject resourceDescription);
+public class TestClass {
+    private static final Logger log = LoggerFactory.getLogger(TestClass.class);
 
-    public Result deploy(int resourceID);
+    public static void main(String[] args) {
+        DockerConnector connector = new DockerConnector();
+        connector.init(null);
+    }
 }

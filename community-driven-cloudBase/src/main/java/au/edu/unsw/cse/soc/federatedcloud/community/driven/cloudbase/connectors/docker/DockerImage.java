@@ -1,4 +1,4 @@
-package au.edu.unsw.cse.soc.federatedcloud.community.based.cloudbase.connectors.juju;
+package au.edu.unsw.cse.soc.federatedcloud.community.driven.cloudbase.connectors.docker;
 /*
  * Copyright (c) 2014, Denis Weerasiri All Rights Reserved.
  *
@@ -18,15 +18,20 @@ package au.edu.unsw.cse.soc.federatedcloud.community.based.cloudbase.connectors.
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.File;
+
 /**
  * User: denis
  * TODO: Include the class description here
  */
-public class JujuCharmInterface {
-    private static final Logger log = LoggerFactory.getLogger(JujuCharmInterface.class);
-    private String name;
+public class DockerImage {
+    private static final Logger log = LoggerFactory.getLogger(DockerImage.class);
 
-    public void setName(String name) {
-        this.name = name;
+    public DockerImage(File concreteImageFile) {
+
+    }
+
+    public DockerImage(String name) {
+
     }
 }

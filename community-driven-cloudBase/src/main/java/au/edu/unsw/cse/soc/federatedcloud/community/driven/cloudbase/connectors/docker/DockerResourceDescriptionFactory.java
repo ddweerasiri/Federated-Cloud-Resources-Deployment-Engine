@@ -1,4 +1,4 @@
-package au.edu.unsw.cse.soc.federatedcloud.community.based.cloudbase.connectors.docker;
+package au.edu.unsw.cse.soc.federatedcloud.community.driven.cloudbase.connectors.docker;
 /*
  * Copyright (c) 2014, Denis Weerasiri All Rights Reserved.
  *

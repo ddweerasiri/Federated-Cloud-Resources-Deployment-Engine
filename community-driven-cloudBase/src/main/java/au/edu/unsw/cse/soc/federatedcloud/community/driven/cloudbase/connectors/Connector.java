@@ -1,4 +1,4 @@
-package au.edu.unsw.cse.soc.federatedcloud.community.based.cloudbase.connectors;
+package au.edu.unsw.cse.soc.federatedcloud.community.driven.cloudbase.connectors;
 /*
  * Copyright (c) 2014, Denis Weerasiri All Rights Reserved.
  *
@@ -15,13 +15,18 @@ package au.edu.unsw.cse.soc.federatedcloud.community.based.cloudbase.connectors;
  * limitations under the License.
  */
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.json.simple.JSONObject;
 
 /**
  * User: denis
- * TODO: Include the class description here
+ * Represent the Connector interface that should be implemented by all connector developers
  */
-public class Result {
-    private static final Logger log = LoggerFactory.getLogger(Result.class);
+public interface Connector {
+    /**
+     * Generate a native resource description and generate a unique id for it.
+     * @return resourceID
+     */
+    public int init(JSONObject resourceDescription);
+
+    public Result deploy(int resourceID);
 }

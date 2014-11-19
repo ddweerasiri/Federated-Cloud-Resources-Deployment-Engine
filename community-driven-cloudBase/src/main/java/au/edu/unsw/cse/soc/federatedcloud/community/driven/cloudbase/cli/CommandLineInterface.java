@@ -1,4 +1,4 @@
-package au.edu.unsw.cse.soc.federatedcloud.community.based.cloudbase.connectors.juju;
+package au.edu.unsw.cse.soc.federatedcloud.community.driven.cloudbase.cli;
 /*
  * Copyright (c) 2014, Denis Weerasiri All Rights Reserved.
  *
@@ -20,28 +20,12 @@ import org.slf4j.LoggerFactory;
 
 /**
  * User: denis
- * TODO: Include the class description here
+ * Example command: "java -classpath "community-driven-cloudbase-1.0-SNAPSHOT-jar-with-dependencies.jar:." au.edu.unsw.cse.soc.federatedcloud.community.driven.cloudbase.cli.CommandLineInterface -init {} -tool docker"
  */
-public class JujuService {
-    private static final Logger log = LoggerFactory.getLogger(JujuService.class);
-    private boolean isExposed;
-    private JujuServiceUnit serviceUnit;
-    private JujuCharm charm;
+public class CommandLineInterface {
+    private static final Logger log = LoggerFactory.getLogger(CommandLineInterface.class);
 
-
-    public void setIsExposed(boolean isExposed) {
-        this.isExposed = isExposed;
-    }
-
-    public void addNewServiceUnit(JujuServiceUnit serviceUnit) {
-        this.serviceUnit = serviceUnit;
-    }
-
-    public void setCharm(JujuCharm charm) {
-        this.charm = charm;
-    }
-
-    public JujuCharm getCharm() {
-        return charm;
+    public static void main(String[] args) {
+        new Cli(args).parse();
     }
 }

@@ -1,4 +1,4 @@
-package au.edu.unsw.cse.soc.federatedcloud.community.based.cloudbase.connectors.juju;
+package au.edu.unsw.cse.soc.federatedcloud.community.driven.cloudbase.connectors;
 /*
  * Copyright (c) 2014, Denis Weerasiri All Rights Reserved.
  *
@@ -22,11 +22,6 @@ import org.slf4j.LoggerFactory;
  * User: denis
  * TODO: Include the class description here
  */
-public class JujuServiceUnit {
-    private static final Logger log = LoggerFactory.getLogger(JujuServiceUnit.class);
-    private JujuAWSProvider provider;
-
-    public void setProvider(JujuAWSProvider provider) {
-        this.provider = provider;
-    }
+public class Result {
+    private static final Logger log = LoggerFactory.getLogger(Result.class);
 }

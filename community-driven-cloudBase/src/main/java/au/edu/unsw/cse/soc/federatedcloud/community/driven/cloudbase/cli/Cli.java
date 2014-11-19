@@ -1,4 +1,4 @@
-package au.edu.unsw.cse.soc.federatedcloud.community.based.cloudbase.cli;
+package au.edu.unsw.cse.soc.federatedcloud.community.driven.cloudbase.cli;
 /*
  * Copyright (c) 2014, Denis Weerasiri All Rights Reserved.
  *
@@ -74,9 +74,9 @@ public class Cli {
         }
 
         if (("docker").equals(tool.toLowerCase())) {
-            au.edu.unsw.cse.soc.federatedcloud.community.based.cloudbase.connectors.docker.TestClass.main(null);
+            au.edu.unsw.cse.soc.federatedcloud.community.driven.cloudbase.connectors.docker.TestClass.main(null);
         } else if (("juju").equals(tool.toLowerCase())) {
-            au.edu.unsw.cse.soc.federatedcloud.community.based.cloudbase.connectors.juju.TestClass.main(null);
+            au.edu.unsw.cse.soc.federatedcloud.community.driven.cloudbase.connectors.juju.TestClass.main(null);
         }
 
 

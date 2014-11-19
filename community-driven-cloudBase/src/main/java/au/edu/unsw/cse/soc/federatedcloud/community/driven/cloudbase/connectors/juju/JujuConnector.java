@@ -1,4 +1,4 @@
-package au.edu.unsw.cse.soc.federatedcloud.community.based.cloudbase.connectors.juju;
+package au.edu.unsw.cse.soc.federatedcloud.community.driven.cloudbase.connectors.juju;
 /*
  * Copyright (c) 2014, Denis Weerasiri All Rights Reserved.
  *
@@ -15,8 +15,8 @@ package au.edu.unsw.cse.soc.federatedcloud.community.based.cloudbase.connectors.
  * limitations under the License.
  */
 
-import au.edu.unsw.cse.soc.federatedcloud.community.based.cloudbase.connectors.Connector;
-import au.edu.unsw.cse.soc.federatedcloud.community.based.cloudbase.connectors.Result;
+import au.edu.unsw.cse.soc.federatedcloud.community.driven.cloudbase.connectors.Connector;
+import au.edu.unsw.cse.soc.federatedcloud.community.driven.cloudbase.connectors.Result;
 import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,9 +24,6 @@ import org.zeroturnaround.zip.ZipUtil;
 
 import java.io.*;
 import java.util.Random;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipInputStream;
-import java.util.zip.ZipOutputStream;
 
 /**
  * User: denis

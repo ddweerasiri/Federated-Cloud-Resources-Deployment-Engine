@@ -1,4 +1,4 @@
-package au.edu.unsw.cse.soc.federatedcloud.community.based.cloudbase.connectors.docker;
+package au.edu.unsw.cse.soc.federatedcloud.community.driven.cloudbase.connectors.juju;
 /*
  * Copyright (c) 2014, Denis Weerasiri All Rights Reserved.
  *
@@ -22,11 +22,11 @@ import org.slf4j.LoggerFactory;
  * User: denis
  * TODO: Include the class description here
  */
-public class TestClass {
-    private static final Logger log = LoggerFactory.getLogger(TestClass.class);
+public class JujuCharmInterface {
+    private static final Logger log = LoggerFactory.getLogger(JujuCharmInterface.class);
+    private String name;
 
-    public static void main(String[] args) {
-        DockerConnector connector = new DockerConnector();
-        connector.init(null);
+    public void setName(String name) {
+        this.name = name;
     }
 }
