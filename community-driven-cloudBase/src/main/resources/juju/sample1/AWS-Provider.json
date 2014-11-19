@@ -1,0 +1,8 @@
+{
+  "$schema-location": "AWS-Provider-Schema.json",
+  "id": "aws-my-account",
+  "type": "AWS",
+  "region": "us-east-1",
+  "access-key": "asdcvbd",
+  "secret-key": "asd234sdfsdfsdfs"
+}

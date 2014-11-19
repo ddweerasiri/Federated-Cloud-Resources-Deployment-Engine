@@ -1,0 +1,17 @@
+{
+  "$schema-location": "AWS-Hosting-Relationship-Schema.json",
+  "author": "denis",
+  "id": "rel-1",
+  "name": "between aws-provider and service unit",
+  "version": "1",
+  "participating-entities": [
+    {
+      "id": "aws-my-account",
+      "role": "hosts"
+    },
+    {
+      "id": "service-unit-1",
+      "role": "hosted by"
+    }
+  ]
+}
