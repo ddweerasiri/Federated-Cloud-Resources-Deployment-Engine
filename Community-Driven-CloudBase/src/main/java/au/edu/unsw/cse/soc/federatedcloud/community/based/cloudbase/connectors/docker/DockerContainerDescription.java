@@ -26,6 +26,9 @@ public class DockerContainerDescription {
     private static final Logger log = LoggerFactory.getLogger(DockerContainerDescription.class);
     private DockerImageDescription image;
     private String name;
+    private String state;
+    private String protBindingRules;
+    private DockerVirtualMachineDescription virtualMachine;
 
     public DockerImageDescription getImage() {
         return image;
@@ -33,5 +36,31 @@ public class DockerContainerDescription {
 
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public void setProtBindingRules(String protBindingRules) {
+        this.protBindingRules = protBindingRules;
+    }
+
+    public void setImage(DockerImageDescription image) {
+        this.image = image;
+    }
+
+
+    public void setVirtualMachine(DockerVirtualMachineDescription virtualMachine) {
+        this.virtualMachine = virtualMachine;
+    }
+
+    public DockerVirtualMachineDescription getVirtualMachine() {
+        return virtualMachine;
     }
 }

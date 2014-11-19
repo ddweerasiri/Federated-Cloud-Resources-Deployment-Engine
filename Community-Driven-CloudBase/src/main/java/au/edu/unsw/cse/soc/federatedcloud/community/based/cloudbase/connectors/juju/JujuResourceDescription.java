@@ -15,10 +15,22 @@ package au.edu.unsw.cse.soc.federatedcloud.community.based.cloudbase.connectors.
  * limitations under the License.
  */
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * User: denis
  * TODO: Include the class description here
  */
 public class JujuResourceDescription {
     private static final Logger log = LoggerFactory.getLogger(JujuResourceDescription.class);
+    private JujuService jujuService;
+
+    public JujuService getService() {
+        return jujuService;
+    }
+
+    public void setJujuService(JujuService jujuService) {
+        this.jujuService = jujuService;
+    }
 }

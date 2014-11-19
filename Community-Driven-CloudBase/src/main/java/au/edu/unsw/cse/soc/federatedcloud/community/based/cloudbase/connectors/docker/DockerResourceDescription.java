@@ -25,5 +25,24 @@ import org.slf4j.LoggerFactory;
  */
 public class DockerResourceDescription extends JSONObject {
     private static final Logger log = LoggerFactory.getLogger(DockerResourceDescription.class);
+    private DockerContainerDescription container;
+    private int testVal = 9;
 
+
+    public DockerResourceDescription() {
+        this.container = new DockerContainerDescription();
+        this.container.setName("defaultName");
+    }
+
+    public DockerContainerDescription getContainer() {
+        return container;
+    }
+
+    public void setContainer(DockerContainerDescription container) {
+        this.container = container;
+    }
+
+    public int getTestVal() {
+        return testVal;
+    }
 }

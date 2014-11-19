@@ -15,10 +15,41 @@ package au.edu.unsw.cse.soc.federatedcloud.community.based.cloudbase.connectors.
  * limitations under the License.
  */
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * User: denis
  * TODO: Include the class description here
  */
 public class DockerResourceDescriptionFactory {
     private static final Logger log = LoggerFactory.getLogger(DockerResourceDescriptionFactory.class);
+
+    public static DockerResourceDescription buildDummyDescription() {
+        DockerResourceDescription desc = new DockerResourceDescription();
+
+        //System.out.println(desc.getTestVal());
+
+        DockerContainerDescription container = new DockerContainerDescription();
+        container.setName("tomcat-instance-1");
+        container.setState("run");
+        container.setProtBindingRules("127.0.0.1:80:8080");
+        desc.setContainer(container);
+
+        //System.out.println(desc.getContainer().getName());
+
+        DockerImageDescription image = new DockerImageDescription();
+        image.setName("ddweerasiri/tomcat7");
+        image.setVersion("7");
+        //image.setScript("sudo apt-get install tomcat");
+        //image.setBaseImage("tifayuki/java", "7");
+        container.setImage(image);
+
+        DockerVirtualMachineDescription vm = new DockerVirtualMachineDescription();
+        vm.setIp("129.94.175.240");
+        vm.setPort("4243");
+        container.setVirtualMachine(vm);
+
+        return desc;
+    }
 }

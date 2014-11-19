@@ -15,10 +15,23 @@ package au.edu.unsw.cse.soc.federatedcloud.community.based.cloudbase.connectors.
  * limitations under the License.
  */
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.File;
+
 /**
  * User: denis
  * TODO: Include the class description here
  */
 public class DockerImage {
     private static final Logger log = LoggerFactory.getLogger(DockerImage.class);
+
+    public DockerImage(File concreteImageFile) {
+
+    }
+
+    public DockerImage(String name) {
+
+    }
 }

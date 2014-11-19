@@ -24,8 +24,48 @@ import org.slf4j.LoggerFactory;
  */
 public class DockerImageDescription {
     private static final Logger log = LoggerFactory.getLogger(DockerImageDescription.class);
+    private String name;
+    private String script;
+    private DockerImageDescription baseImage;
+    private String version;
 
     public boolean hasScript() {
-        return false;
+        return script!= null && !script.isEmpty();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getScript() {
+        return script;
+    }
+
+    public DockerImageDescription getBaseImage() {
+        return baseImage;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
+    }
+
+    public void setScript(String script) {
+        this.script = script;
+    }
+
+    public void setBaseImage(String name, String version) {
+        if (this.baseImage == null) {
+            this.baseImage  = new DockerImageDescription();
+            this.baseImage.setName(name);
+            this.baseImage.setVersion(version);
+        }
+        else {
+            log.debug("Base image of image:" + getName() + " is already created.");
+        }
+
     }
 }

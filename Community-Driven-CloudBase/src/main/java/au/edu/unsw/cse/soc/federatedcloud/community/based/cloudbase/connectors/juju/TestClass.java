@@ -15,10 +15,18 @@ package au.edu.unsw.cse.soc.federatedcloud.community.based.cloudbase.connectors.
  * limitations under the License.
  */
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * User: denis
  * TODO: Include the class description here
  */
 public class TestClass {
     private static final Logger log = LoggerFactory.getLogger(TestClass.class);
+
+    public static void main(String[] args) {
+        JujuConnector connector = new JujuConnector();
+        connector.init(null);
+    }
 }

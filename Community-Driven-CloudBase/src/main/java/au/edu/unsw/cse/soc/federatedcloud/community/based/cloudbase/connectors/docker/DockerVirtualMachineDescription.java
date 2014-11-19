@@ -24,4 +24,22 @@ import org.slf4j.LoggerFactory;
  */
 public class DockerVirtualMachineDescription {
     private static final Logger log = LoggerFactory.getLogger(DockerVirtualMachineDescription.class);
+    private String ip;
+    private String port;
+
+    public void setIp(String ip) {
+        this.ip = ip;
+    }
+
+    public String getIp() {
+        return this.ip;
+    }
+
+    public String getPort() {
+        return port;
+    }
+
+    public void setPort(String port) {
+        this.port = port;
+    }
 }
