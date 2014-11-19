@@ -23,6 +23,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
@@ -32,6 +34,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CloudBaseUserInterface {
+    private static final Logger log = LoggerFactory.getLogger(CloudBaseUserInterface.class);
+
     public static void main(String[] args) {
         CloudBaseUserInterface interfaze = new CloudBaseUserInterface();
 
@@ -40,7 +44,15 @@ public class CloudBaseUserInterface {
             command = args[0];
             if ("init".equals(command)) {
                 String appName = args[1];
-                interfaze.initCloudBase(appName);
+                try {
+                    String appAttributes = args[2];
+                    interfaze.initCloudBase(appName,appAttributes);
+                }
+                catch (ArrayIndexOutOfBoundsException aie) {
+                    log.warn("No attributes specified.");
+                    interfaze.initCloudBase(appName);
+                }
+
             } else if ("deploy".equals(command)) {
                 String resourceName = args[1];
                 String resourceMetaData = args[2];
@@ -53,6 +65,7 @@ public class CloudBaseUserInterface {
             }
         } catch (ArrayIndexOutOfBoundsException ex) {
             System.err.println("please specify a command.");
+            log.error(ex.getMessage(), ex);
         } catch (IOException e) {
             System.err.println(e.getMessage());
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
@@ -66,6 +79,16 @@ public class CloudBaseUserInterface {
      * @param appName
      */
     private void initCloudBase(String appName) {
+        initCloudBase(appName, "{}");
+    }
+
+    /**
+     * Init an App.
+     * Sample command: init aws-s3
+     * @param appName
+     * @param appAttributes
+     */
+    private void initCloudBase(String appName, String appAttributes) {
         //check if app.json exist in the current directory
         File jsonFile = new File("./" + Constants.FILE_NAME);
         //if app.json does not exist
@@ -84,7 +107,13 @@ public class CloudBaseUserInterface {
 
                     App app = gson.fromJson(fileContent, App.class);
 
+                    //Set name
                     app.setName(appName);
+
+                    //set attributes
+                    Map<String,String> map=new HashMap<String,String>();
+                    app.setAttributes((Map<String,String>) gson.fromJson(appAttributes, map.getClass()));
+
                     transformAppToFile(app, jsonFile);
 
                     System.out.println("App:" +app.getName() + " was created");
@@ -142,7 +171,7 @@ public class CloudBaseUserInterface {
                 e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
             }
         } else {
-            //do nothing, send an message to user
+            log.error("Please initialize an App first using \"init\" command.");
         }
     }
 
