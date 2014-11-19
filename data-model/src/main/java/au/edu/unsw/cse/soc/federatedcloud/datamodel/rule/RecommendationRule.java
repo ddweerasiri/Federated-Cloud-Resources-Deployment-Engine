@@ -15,10 +15,60 @@ package au.edu.unsw.cse.soc.federatedcloud.datamodel.rule;
  * limitations under the License.
  */
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * User: denis
- * TODO: Include the class description here
+ * Represents an Recommendation Rule
  */
 public class RecommendationRule {
     private static final Logger log = LoggerFactory.getLogger(RecommendationRule.class);
+
+    private String id;
+    private Condition condition;
+    private Conclusion conclusion;
+    private String exceptNodeId;
+    private String falseNodeId;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public Condition getCondition() {
+        return condition;
+    }
+
+    public void setCondition(Condition condition) {
+        this.condition = condition;
+    }
+
+    public Conclusion getConclusion() {
+        return conclusion;
+    }
+
+    public void setConclusion(Conclusion conclusion) {
+        this.conclusion = conclusion;
+    }
+
+    public String getExceptNodeId() {
+        return exceptNodeId;
+    }
+
+    public void setExceptNodeId(String exceptNodeId) {
+        this.exceptNodeId = exceptNodeId;
+    }
+
+    public String getFalseNodeId() {
+        return falseNodeId;
+    }
+
+    public void setFalseNodeId(String falseNodeId) {
+        this.falseNodeId = falseNodeId;
+    }
+
 }

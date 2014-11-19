@@ -19,14 +19,14 @@ import java.util.List;
 
 /**
 * User: denis
-* TODO: Include the class description here
+* The condition of the rule
 */
 public class Condition {
-    private List<String> getTaskCategories() {
+    public List<String> getTaskCategories() {
         return taskCategories;
     }
 
-    private void setTaskCategories(List<String> taskCategories) {
+    public void setTaskCategories(List<String> taskCategories) {
         this.taskCategories = taskCategories;
     }
 

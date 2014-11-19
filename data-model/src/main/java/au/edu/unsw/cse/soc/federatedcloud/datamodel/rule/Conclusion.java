@@ -17,16 +17,16 @@ package au.edu.unsw.cse.soc.federatedcloud.datamodel.rule;
 
 /**
 * User: denis
-* TODO: Include the class description here
+* The Conclusion of the Rule
 */
 public class Conclusion {
-    private int getCloudResourceDescriptionId() {
+    public String getCloudResourceDescriptionId() {
         return cloudResourceDescriptionId;
     }
 
-    private void setCloudResourceDescriptionId(int cloudResourceDescriptionId) {
+    public void setCloudResourceDescriptionId(String cloudResourceDescriptionId) {
         this.cloudResourceDescriptionId = cloudResourceDescriptionId;
     }
 
-    private int cloudResourceDescriptionId;
+    private String cloudResourceDescriptionId;
 }

@@ -15,6 +15,10 @@ package au.edu.unsw.cse.soc.federatedcloud.datamodel.resource;
  * limitations under the License.
  */
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import java.util.HashMap;
 
 /**
@@ -33,6 +37,7 @@ public class Handler {
         this.attributes = attributes;
     }
 
+    @JsonIgnore
     public String getName() throws Exception {
         String name = attributes.get(NAME_ATTRIBUTE);
         if (name != null) {
